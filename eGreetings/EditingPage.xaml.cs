@@ -19,7 +19,6 @@ namespace eGreetings
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private int tickCounter = 0;
-        private Image selectedImage;
         public EditingPage()
         {
             InitializeComponent();

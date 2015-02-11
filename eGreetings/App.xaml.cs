@@ -17,8 +17,6 @@ namespace eGreetings
     {
         public List<Image> TemplateImages = new List<Image>();
         public Image selectedImage;
-        public Page editingPage, objectsPage;
-        public Image objectToAdd = new Image();
 
 
         public static new App Current
