@@ -61,3 +61,6 @@ C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debu
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.dll
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.pdb
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\XapCacheFile.xml
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\SendPage.g.cs
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Venetasoft.WP.Net.SMTP.dll

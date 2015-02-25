@@ -11,7 +11,11 @@ using eGreetings.Resources;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Windows.Input;
-
+using System.IO.IsolatedStorage;
+using System.IO;
+using System.Windows.Media;
+using Microsoft.Phone.Tasks;
+using System.Threading.Tasks;
 
 namespace eGreetings
 {
@@ -51,12 +55,19 @@ namespace eGreetings
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
 
+            using (IsolatedStorageFileStream isoStream2 = new IsolatedStorageFileStream("new.jpg", FileMode.OpenOrCreate, isoStore))
+            {
+                WriteableBitmap wbmp = new WriteableBitmap(canvasImage, null);
+                wbmp.SaveJpeg(isoStream2, wbmp.PixelWidth, wbmp.PixelHeight, 0, 100);
+            }
+            
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/SendPage.xaml", UriKind.Relative));
         }
 
         private void btnText_Click(object sender, RoutedEventArgs e)
@@ -74,8 +85,8 @@ namespace eGreetings
             if (tickCounter < 1)
             {
                 Image i = new Image();
-                i.MaxHeight = 60;
-                i.MaxWidth = 70;
+                i.MaxHeight = 120;
+                i.MaxWidth = 120;
                 i.Source = ((Image)sender).Source;
                 //MessageBox.Show(i.Name);
                 ContentPanel.Visibility = Visibility.Visible;
@@ -84,6 +95,8 @@ namespace eGreetings
                 //Found this method of allowing the image to be draggable here: http://blogs.msdn.com/b/pakistan/archive/2013/07/10/drag-amp-drop-in-silverlight-for-windows-phone.aspx
                 i.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(OnManipulationDelta);                
                 canvasImage.Children.Add(i);
+                Canvas.SetLeft(i, Application.Current.Host.Content.ActualWidth / 2);
+                Canvas.SetTop(i, Application.Current.Host.Content.ActualHeight / 4);
             }
             tickCounter = 0;
         }
@@ -114,9 +127,7 @@ namespace eGreetings
             NavigationService.RemoveBackEntry();
             //ContentPanel.Children.RemoveAt(0);
         }
-
-
-
+        
         public object NewImgMouseLeftButtonDown { get; set; }
     }
 }

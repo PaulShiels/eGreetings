@@ -14,7 +14,7 @@
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="9*"/>
@@ -27,7 +27,7 @@
         <!--</StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <ListBox x:Name="lbxObjects" Visibility="Visible" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
+        <ListBox x:Name="lbxObjects" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -71,12 +71,12 @@
                 <Image x:Name="wreath1" Source="Assets\\Images\\ObjectsGrid\\wreath1.png" Grid.Row="4" Grid.Column="4" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
             </Grid>
         </ListBox>
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            
-            <Canvas x:Name="canvasImage" Grid.RowSpan="2">
+        <Grid x:Name="ContentPanel" Margin="12,0,12,0">
+                        
+            <Canvas x:Name="canvasImage" Grid.Column="1">
                 <Image x:Name="imgBackgroundImage"></Image>
             </Canvas>
-            <StackPanel x:Name="spToolsButtons" Margin="0,10">
+            <StackPanel x:Name="spToolsButtons"  Margin="0,10">
                 <!--<Button x:Name="btnObjects" Content="OBJ" Click="btnObjects_Click"></Button>-->
                 <Image x:Name="btnObjects" Margin="0,20" Source="Assets\\Images\\Smiley.png" MouseLeftButtonDown="btnObjects_Click" Height="60" Width="60"></Image>
                 <Image x:Name="btnText" Source="Assets\\Images\\Text.png" Margin="0,20" HorizontalAlignment="Center" MouseLeftButtonDown="btnText_Click" ></Image>

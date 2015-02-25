@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\eGreetings_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="11/02/2015 19:18:46">
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="11/02/2015 19:18:44" />
+﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\eGreetings_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="25/02/2015 18:48:01">
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="25/02/2015 18:47:57" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="04/02/2015 14:28:34" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Images\ObjectsGrid\ball.png" archivePath="Assets\Images\ObjectsGrid\ball.png" lastWriteTime="11/02/2015 14:25:50" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Images\ObjectsGrid\balloon.png" archivePath="Assets\Images\ObjectsGrid\balloon.png" lastWriteTime="11/02/2015 14:28:14" />
@@ -38,8 +38,9 @@
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="04/02/2015 14:28:34" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="04/02/2015 14:28:34" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="04/02/2015 14:28:34" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="11/02/2015 13:28:46" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="25/02/2015 10:28:16" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="04/02/2015 14:28:34" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="04/02/2015 14:28:34" />
+  <file source="C:\Users\Paul\Downloads\MailMessage_Trial_1.3.1 (1)\MailMessage_Trial\Bin\Debug\Venetasoft.WP.Net.SMTP.dll" archivePath="Venetasoft.WP.Net.SMTP.dll" lastWriteTime="25/02/2015 10:06:13" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="11/02/2015 13:28:46" />
 </xapCache>

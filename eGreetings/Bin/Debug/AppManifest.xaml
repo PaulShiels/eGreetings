@@ -1,5 +1,6 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="eGreetings" EntryPointType="eGreetings.App" RuntimeVersion="4.7.50308.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="eGreetings" Source="eGreetings.dll" />
+    <AssemblyPart x:Name="Venetasoft.WP.Net.SMTP" Source="Venetasoft.WP.Net.SMTP.dll" />
   </Deployment.Parts>
 </Deployment>

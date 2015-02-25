@@ -9,6 +9,7 @@ using Microsoft.Phone.Shell;
 using eGreetings.Resources;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace eGreetings
 {
@@ -17,6 +18,8 @@ namespace eGreetings
     {
         public List<Image> TemplateImages = new List<Image>();
         public Image selectedImage;
+        public string emailBody;
+        public string emailImageName;
 
 
         public static new App Current
