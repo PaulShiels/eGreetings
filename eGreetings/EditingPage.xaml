@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -27,6 +29,8 @@
         <!--</StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
+        
+
         <ListBox x:Name="lbxObjects" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -71,8 +75,7 @@
                 <Image x:Name="wreath1" Source="Assets\\Images\\ObjectsGrid\\wreath1.png" Grid.Row="4" Grid.Column="4" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
             </Grid>
         </ListBox>
-        <Grid x:Name="ContentPanel" Margin="12,0,12,0">
-                        
+        <Grid x:Name="ContentPanel" Margin="12,0,12,0">            
             <Canvas x:Name="canvasImage" Grid.Column="1">
                 <Image x:Name="imgBackgroundImage"></Image>
             </Canvas>
@@ -82,9 +85,22 @@
                 <Image x:Name="btnText" Source="Assets\\Images\\Text.png" Margin="0,20" HorizontalAlignment="Center" MouseLeftButtonDown="btnText_Click" ></Image>
                 <Image x:Name="btnSave" Source="Assets\\Images\\save.png" Margin="0,20" MouseLeftButtonDown="btnSave_Click"></Image>
                 <Image x:Name="btnSend" Source="Assets\\Images\\send.png" Margin="0,20" MouseLeftButtonDown="btnSend_Click"></Image>
-            </StackPanel>
-            
+            </StackPanel>            
         </Grid>
+
+        <Border x:Name="spModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="600" MaxHeight="350" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
+            <StackPanel>
+                <TextBlock Text="Save Image Before Sending?" FontSize="38" Margin="0,40" Foreground="Black" FontWeight="ExtraBold" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="80,50">
+                    <Border BorderBrush="#6BA92A" Background="LightBlue" CornerRadius="15,15,15,15" BorderThickness="0">
+                        <Button x:Name="btnYes" FontSize="38" Width="150" Content="Yes" Foreground="Black" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnYes_Click"></Button>
+                    </Border>
+                    <Border BorderBrush="#6BA92A" Background="LightBlue" Margin="140,0" CornerRadius="15,15,15,15" BorderThickness="0">
+                        <Button x:Name="btnNo" FontSize="38" Width="150" Content="No" Foreground="Black" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnNo_Click"></Button>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 
 </phone:PhoneApplicationPage>

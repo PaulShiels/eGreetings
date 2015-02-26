@@ -55,6 +55,11 @@ namespace eGreetings
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            saveImage();            
+        }
+
+        private void saveImage()
+        {
             IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
 
             using (IsolatedStorageFileStream isoStream2 = new IsolatedStorageFileStream("new.jpg", FileMode.OpenOrCreate, isoStore))
@@ -62,12 +67,14 @@ namespace eGreetings
                 WriteableBitmap wbmp = new WriteableBitmap(canvasImage, null);
                 wbmp.SaveJpeg(isoStream2, wbmp.PixelWidth, wbmp.PixelHeight, 0, 100);
             }
-            
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/SendPage.xaml", UriKind.Relative));
+            spModal.Visibility = Visibility.Visible;
+            Canvas.SetZIndex(spModal, 2);
+            Canvas.SetZIndex(ContentPanel, 0);
+            ContentPanel.Opacity=0.5;
         }
 
         private void btnText_Click(object sender, RoutedEventArgs e)
@@ -129,5 +136,20 @@ namespace eGreetings
         }
         
         public object NewImgMouseLeftButtonDown { get; set; }
+
+        private void btnYes_Click(object sender, RoutedEventArgs e)
+        {
+            saveImage();
+            NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
+            spModal.Visibility = Visibility.Collapsed;
+            ContentPanel.Opacity = 1;            
+        }
+
+        private void btnNo_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
+            spModal.Visibility = Visibility.Collapsed;
+            ContentPanel.Opacity = 1;
+        }  
     }
 }
