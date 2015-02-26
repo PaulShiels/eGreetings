@@ -23,20 +23,48 @@ namespace eGreetings
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private int tickCounter = 0;
+        private int objectSelectionTickCounter;
+        private bool DisplayImageSavedText;
+
         public EditingPage()
         {
             InitializeComponent();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 150);//Allows 150 milliseconds to click an object
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 75);//Allows 150 milliseconds to click an object
             timer.Tick += timer_Tick;
             //App.Current.editingPage = this;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            tickCounter++;
+            //Timer is used to stop objects being selected when dragging them in the listbox 
+            //The user must tap the object and let it go within 150ms
+            if (objectSelectionTickCounter >= 2)
+            {                
+                objectSelectionTickCounter = 0;
+            }
+            else
+            {
+                objectSelectionTickCounter++;
+            }
+
+            //Fade out the Image Saved Message
+            if (DisplayImageSavedText)
+                DisplayImageSavedText = false;
+            else
+            {
+                if (txtImagedSaved.Opacity > 0)
+                    txtImagedSaved.Opacity -= 0.05;
+                else
+                {
+                    txtImagedSaved.Visibility = Visibility.Collapsed;
+                    timer.Stop();
+                }
+            }
+
             //Check if any new objects need to be added
             //if (App.Current.objectToAdd != null)
             //    oldImageObject = App.Current.objectToAdd;
+            tickCounter++;
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -67,6 +95,10 @@ namespace eGreetings
                 WriteableBitmap wbmp = new WriteableBitmap(canvasImage, null);
                 wbmp.SaveJpeg(isoStream2, wbmp.PixelWidth, wbmp.PixelHeight, 0, 100);
             }
+            txtImagedSaved.Visibility = Visibility.Visible;
+            txtImagedSaved.Opacity = 1;
+            DisplayImageSavedText = true;
+            timer.Start();
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -89,7 +121,7 @@ namespace eGreetings
             //Get the clicked image
             //Show the editing view again
             timer.Stop();
-            if (tickCounter < 1)
+            if (objectSelectionTickCounter < 1)
             {
                 Image i = new Image();
                 i.MaxHeight = 120;
@@ -105,7 +137,7 @@ namespace eGreetings
                 Canvas.SetLeft(i, Application.Current.Host.Content.ActualWidth / 2);
                 Canvas.SetTop(i, Application.Current.Host.Content.ActualHeight / 4);
             }
-            tickCounter = 0;
+            objectSelectionTickCounter = 0;
         }
 
         void OnManipulationDelta(object sender, ManipulationDeltaEventArgs args)

@@ -101,6 +101,10 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+
+        <Border x:Name="txtImagedSaved" Visibility="Collapsed" CornerRadius="10,10,10,10" Background="Pink" Grid.Column="1" Margin="20" HorizontalAlignment="Right" Width="250" Height="70" VerticalAlignment="Top">
+            <TextBlock Text="Image Saved" FontSize="34" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="DarkRed"></TextBlock>
+        </Border>
     </Grid>
 
 </phone:PhoneApplicationPage>
