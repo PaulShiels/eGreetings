@@ -13,6 +13,8 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using System.IO.IsolatedStorage;
 using System.Net.NetworkInformation;
+using System.Reflection;
+using Windows.Storage;
 
 namespace eGreetings
 {
@@ -93,18 +95,14 @@ namespace eGreetings
             //attach ANY KIND of file from a resource or IsolatedStorage path
             //Image SeasonGreetings = new Image() { Source = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative)) };
             //BitmapImage b = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative));
-            //FileInfo fi = new FileInfo(b.UriSource.ToString());
-            //using (FileStream stream = new FileStream(fi.FullName, FileMode.Open, FileAccess.Read))
-            //{
-            //    byte[] objByte = new byte[stream.Length];
-            //    string base64 = base64 = Convert.ToBase64String(objByte);
-            //    mailMessage.AddAttachment(objByte, "Image");
-            //}
-            string image = ((BitmapImage)(App.Current.selectedImage.Source)).UriSource.ToString();
-            string imageName = image.Substring(14, image.Length - 14);
-            mailMessage.AddAttachment("Assets/Images/" + imageName);
+            //FileInfo fi = new FileInfo(App.Current.imageToSend.Source.ToString());//b.UriSource.ToString());
+            
+            //string image = ((BitmapImage)(App.Current.selectedImage.Source)).UriSource.ToString();
+            //string imageName = image.Substring(14, image.Length - 14);
+            mailMessage.AddAttachment(App.Current.imageToSend,"Greetings.jpg");
 
             //attach from in-memory data:
+            //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
             //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
             //set message event handlers
             mailMessage.Error += mailMessage_Error;
@@ -113,5 +111,6 @@ namespace eGreetings
             //send email (async)
             mailMessage.Send();
         }
+        
     }
 }

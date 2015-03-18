@@ -20,7 +20,9 @@ namespace eGreetings
         public Image selectedImage;
         public string emailBody;
         public string emailImageName;
-
+        public Image savedImage = new Image();
+        public List<Image> objectImages = new List<Image>();
+        public byte[] imageToSend;
 
         public static new App Current
         {

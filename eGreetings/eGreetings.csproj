@@ -96,12 +96,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditingPage.xaml.cs">
       <DependentUpon>EditingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
@@ -115,6 +124,7 @@
     <Compile Include="TemplateListPage.xaml.cs">
       <DependentUpon>TemplateListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserCredentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -125,11 +135,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +166,693 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Assets\Fonts\8514fix.fon" />
+    <None Include="Assets\Fonts\8514fixe.fon" />
+    <None Include="Assets\Fonts\8514fixg.fon" />
+    <None Include="Assets\Fonts\8514fixr.fon" />
+    <None Include="Assets\Fonts\8514fixt.fon" />
+    <None Include="Assets\Fonts\8514oem.fon" />
+    <None Include="Assets\Fonts\8514oeme.fon" />
+    <None Include="Assets\Fonts\8514oemg.fon" />
+    <None Include="Assets\Fonts\8514oemr.fon" />
+    <None Include="Assets\Fonts\8514oemt.fon" />
+    <None Include="Assets\Fonts\8514sys.fon" />
+    <None Include="Assets\Fonts\8514syse.fon" />
+    <None Include="Assets\Fonts\8514sysg.fon" />
+    <None Include="Assets\Fonts\8514sysr.fon" />
+    <None Include="Assets\Fonts\8514syst.fon" />
+    <None Include="Assets\Fonts\85775.fon" />
+    <None Include="Assets\Fonts\85855.fon" />
+    <None Include="Assets\Fonts\85f1255.fon" />
+    <None Include="Assets\Fonts\85f1256.fon" />
+    <None Include="Assets\Fonts\85f1257.fon" />
+    <None Include="Assets\Fonts\85f874.fon" />
+    <None Include="Assets\Fonts\85s1255.fon" />
+    <None Include="Assets\Fonts\85s1256.fon" />
+    <None Include="Assets\Fonts\85s1257.fon" />
+    <None Include="Assets\Fonts\85s874.fon" />
+    <None Include="Assets\Fonts\AGENCYB.TTF" />
+    <None Include="Assets\Fonts\AGENCYR.TTF" />
+    <None Include="Assets\Fonts\ahronbd.ttf" />
+    <None Include="Assets\Fonts\aldhabi.ttf" />
+    <None Include="Assets\Fonts\ALGER.TTF" />
+    <None Include="Assets\Fonts\andlso.ttf" />
+    <None Include="Assets\Fonts\angsa.ttf" />
+    <None Include="Assets\Fonts\angsab.ttf" />
+    <None Include="Assets\Fonts\angsai.ttf" />
+    <None Include="Assets\Fonts\angsau.ttf" />
+    <None Include="Assets\Fonts\angsaub.ttf" />
+    <None Include="Assets\Fonts\angsaui.ttf" />
+    <None Include="Assets\Fonts\angsauz.ttf" />
+    <None Include="Assets\Fonts\angsaz.ttf" />
+    <None Include="Assets\Fonts\ANTQUAB.TTF" />
+    <None Include="Assets\Fonts\ANTQUABI.TTF" />
+    <None Include="Assets\Fonts\ANTQUAI.TTF" />
+    <None Include="Assets\Fonts\aparaj.ttf" />
+    <None Include="Assets\Fonts\aparajb.ttf" />
+    <None Include="Assets\Fonts\aparajbi.ttf" />
+    <None Include="Assets\Fonts\aparaji.ttf" />
+    <None Include="Assets\Fonts\app775.fon" />
+    <None Include="Assets\Fonts\app850.fon" />
+    <None Include="Assets\Fonts\app852.fon" />
+    <None Include="Assets\Fonts\app855.fon" />
+    <None Include="Assets\Fonts\app857.fon" />
+    <None Include="Assets\Fonts\app866.fon" />
+    <None Include="Assets\Fonts\app932.fon" />
+    <None Include="Assets\Fonts\app936.fon" />
+    <None Include="Assets\Fonts\app949.fon" />
+    <None Include="Assets\Fonts\app950.fon" />
+    <None Include="Assets\Fonts\arabtype.ttf" />
+    <None Include="Assets\Fonts\arial.ttf" />
+    <None Include="Assets\Fonts\arialbd.ttf" />
+    <None Include="Assets\Fonts\arialbi.ttf" />
+    <None Include="Assets\Fonts\ariali.ttf" />
+    <None Include="Assets\Fonts\ARIALN.TTF" />
+    <None Include="Assets\Fonts\ARIALNB.TTF" />
+    <None Include="Assets\Fonts\ARIALNBI.TTF" />
+    <None Include="Assets\Fonts\ARIALNI.TTF" />
+    <None Include="Assets\Fonts\ARIALUNI.TTF" />
+    <None Include="Assets\Fonts\ariblk.ttf" />
+    <None Include="Assets\Fonts\ARLRDBD.TTF" />
+    <None Include="Assets\Fonts\BASKVILL.TTF" />
+    <None Include="Assets\Fonts\batang.ttc" />
+    <None Include="Assets\Fonts\BAUHS93.TTF" />
+    <None Include="Assets\Fonts\BELL.TTF" />
+    <None Include="Assets\Fonts\BELLB.TTF" />
+    <None Include="Assets\Fonts\BELLI.TTF" />
+    <None Include="Assets\Fonts\BERNHC.TTF" />
+    <None Include="Assets\Fonts\BKANT.TTF" />
+    <None Include="Assets\Fonts\BOD_B.TTF" />
+    <None Include="Assets\Fonts\BOD_BI.TTF" />
+    <None Include="Assets\Fonts\BOD_BLAI.TTF" />
+    <None Include="Assets\Fonts\BOD_BLAR.TTF" />
+    <None Include="Assets\Fonts\BOD_CB.TTF" />
+    <None Include="Assets\Fonts\BOD_CBI.TTF" />
+    <None Include="Assets\Fonts\BOD_CI.TTF" />
+    <None Include="Assets\Fonts\BOD_CR.TTF" />
+    <None Include="Assets\Fonts\BOD_I.TTF" />
+    <None Include="Assets\Fonts\BOD_PSTC.TTF" />
+    <None Include="Assets\Fonts\BOD_R.TTF" />
+    <None Include="Assets\Fonts\BOOKOS.TTF" />
+    <None Include="Assets\Fonts\BOOKOSB.TTF" />
+    <None Include="Assets\Fonts\BOOKOSBI.TTF" />
+    <None Include="Assets\Fonts\BOOKOSI.TTF" />
+    <None Include="Assets\Fonts\BRADHITC.TTF" />
+    <None Include="Assets\Fonts\BRITANIC.TTF" />
+    <None Include="Assets\Fonts\BRLNSB.TTF" />
+    <None Include="Assets\Fonts\BRLNSDB.TTF" />
+    <None Include="Assets\Fonts\BRLNSR.TTF" />
+    <None Include="Assets\Fonts\BROADW.TTF" />
+    <None Include="Assets\Fonts\browa.ttf" />
+    <None Include="Assets\Fonts\browab.ttf" />
+    <None Include="Assets\Fonts\browai.ttf" />
+    <None Include="Assets\Fonts\browau.ttf" />
+    <None Include="Assets\Fonts\browaub.ttf" />
+    <None Include="Assets\Fonts\browaui.ttf" />
+    <None Include="Assets\Fonts\browauz.ttf" />
+    <None Include="Assets\Fonts\browaz.ttf" />
+    <None Include="Assets\Fonts\BRUSHSCI.TTF" />
+    <None Include="Assets\Fonts\BSSYM7.TTF" />
+    <None Include="Assets\Fonts\BuxtonSketch.ttf" />
+    <None Include="Assets\Fonts\c8514fix.fon" />
+    <None Include="Assets\Fonts\c8514oem.fon" />
+    <None Include="Assets\Fonts\c8514sys.fon" />
+    <None Include="Assets\Fonts\calibri.ttf" />
+    <None Include="Assets\Fonts\calibrib.ttf" />
+    <None Include="Assets\Fonts\calibrii.ttf" />
+    <None Include="Assets\Fonts\calibril.ttf" />
+    <None Include="Assets\Fonts\calibrili.ttf" />
+    <None Include="Assets\Fonts\calibriz.ttf" />
+    <None Include="Assets\Fonts\CALIFB.TTF" />
+    <None Include="Assets\Fonts\CALIFI.TTF" />
+    <None Include="Assets\Fonts\CALIFR.TTF" />
+    <None Include="Assets\Fonts\CALIST.TTF" />
+    <None Include="Assets\Fonts\CALISTB.TTF" />
+    <None Include="Assets\Fonts\CALISTBI.TTF" />
+    <None Include="Assets\Fonts\CALISTI.TTF" />
+    <None Include="Assets\Fonts\cambria.ttc" />
+    <None Include="Assets\Fonts\cambriab.ttf" />
+    <None Include="Assets\Fonts\cambriai.ttf" />
+    <None Include="Assets\Fonts\cambriaz.ttf" />
+    <None Include="Assets\Fonts\Candara.ttf" />
+    <None Include="Assets\Fonts\Candarab.ttf" />
+    <None Include="Assets\Fonts\Candarai.ttf" />
+    <None Include="Assets\Fonts\Candaraz.ttf" />
+    <None Include="Assets\Fonts\CASTELAR.TTF" />
+    <None Include="Assets\Fonts\CENSCBK.TTF" />
+    <None Include="Assets\Fonts\CENTAUR.TTF" />
+    <None Include="Assets\Fonts\CENTURY.TTF" />
+    <None Include="Assets\Fonts\cga40737.fon" />
+    <None Include="Assets\Fonts\cga40850.fon" />
+    <None Include="Assets\Fonts\cga40852.fon" />
+    <None Include="Assets\Fonts\cga40857.fon" />
+    <None Include="Assets\Fonts\cga40866.fon" />
+    <None Include="Assets\Fonts\cga40869.fon" />
+    <None Include="Assets\Fonts\cga40woa.fon" />
+    <None Include="Assets\Fonts\cga80737.fon" />
+    <None Include="Assets\Fonts\cga80850.fon" />
+    <None Include="Assets\Fonts\cga80852.fon" />
+    <None Include="Assets\Fonts\cga80857.fon" />
+    <None Include="Assets\Fonts\cga80866.fon" />
+    <None Include="Assets\Fonts\cga80869.fon" />
+    <None Include="Assets\Fonts\cga80woa.fon" />
+    <None Include="Assets\Fonts\CHILLER.TTF" />
+    <None Include="Assets\Fonts\COLONNA.TTF" />
+    <None Include="Assets\Fonts\comic.ttf" />
+    <None Include="Assets\Fonts\comicbd.ttf" />
+    <None Include="Assets\Fonts\comici.ttf" />
+    <None Include="Assets\Fonts\comicz.ttf" />
+    <None Include="Assets\Fonts\consola.ttf" />
+    <None Include="Assets\Fonts\consolab.ttf" />
+    <None Include="Assets\Fonts\consolai.ttf" />
+    <None Include="Assets\Fonts\consolaz.ttf" />
+    <None Include="Assets\Fonts\constan.ttf" />
+    <None Include="Assets\Fonts\constanb.ttf" />
+    <None Include="Assets\Fonts\constani.ttf" />
+    <None Include="Assets\Fonts\constanz.ttf" />
+    <None Include="Assets\Fonts\COOPBL.TTF" />
+    <None Include="Assets\Fonts\COPRGTB.TTF" />
+    <None Include="Assets\Fonts\COPRGTL.TTF" />
+    <None Include="Assets\Fonts\corbel.ttf" />
+    <None Include="Assets\Fonts\corbelb.ttf" />
+    <None Include="Assets\Fonts\corbeli.ttf" />
+    <None Include="Assets\Fonts\corbelz.ttf" />
+    <None Include="Assets\Fonts\cordia.ttf" />
+    <None Include="Assets\Fonts\cordiab.ttf" />
+    <None Include="Assets\Fonts\cordiai.ttf" />
+    <None Include="Assets\Fonts\cordiau.ttf" />
+    <None Include="Assets\Fonts\cordiaub.ttf" />
+    <None Include="Assets\Fonts\cordiaui.ttf" />
+    <None Include="Assets\Fonts\cordiauz.ttf" />
+    <None Include="Assets\Fonts\cordiaz.ttf" />
+    <None Include="Assets\Fonts\coue1255.fon" />
+    <None Include="Assets\Fonts\coue1256.fon" />
+    <None Include="Assets\Fonts\coue1257.fon" />
+    <None Include="Assets\Fonts\couf1255.fon" />
+    <None Include="Assets\Fonts\couf1256.fon" />
+    <None Include="Assets\Fonts\couf1257.fon" />
+    <None Include="Assets\Fonts\cour.ttf" />
+    <None Include="Assets\Fonts\courbd.ttf" />
+    <None Include="Assets\Fonts\courbi.ttf" />
+    <None Include="Assets\Fonts\coure.fon" />
+    <None Include="Assets\Fonts\couree.fon" />
+    <None Include="Assets\Fonts\coureg.fon" />
+    <None Include="Assets\Fonts\courer.fon" />
+    <None Include="Assets\Fonts\couret.fon" />
+    <None Include="Assets\Fonts\courf.fon" />
+    <None Include="Assets\Fonts\courfe.fon" />
+    <None Include="Assets\Fonts\courfg.fon" />
+    <None Include="Assets\Fonts\courfr.fon" />
+    <None Include="Assets\Fonts\courft.fon" />
+    <None Include="Assets\Fonts\couri.ttf" />
+    <None Include="Assets\Fonts\CURLZ___.TTF" />
+    <None Include="Assets\Fonts\cvgafix.fon" />
+    <None Include="Assets\Fonts\cvgasys.fon" />
+    <None Include="Assets\Fonts\daunpenh.ttf" />
+    <None Include="Assets\Fonts\david.ttf" />
+    <None Include="Assets\Fonts\davidbd.ttf" />
+    <None Include="Assets\Fonts\DengXian.ttf" />
+    <None Include="Assets\Fonts\desktop.ini" />
+    <None Include="Assets\Fonts\dokchamp.ttf" />
+    <None Include="Assets\Fonts\dos737.fon" />
+    <None Include="Assets\Fonts\dos869.fon" />
+    <None Include="Assets\Fonts\dosapp.fon" />
+    <None Include="Assets\Fonts\DS-DIGI.TTF" />
+    <None Include="Assets\Fonts\DS-DIGIB.TTF" />
+    <None Include="Assets\Fonts\DS-DIGII.TTF" />
+    <None Include="Assets\Fonts\DS-DIGIT.TTF" />
+    <None Include="Assets\Fonts\ebrima.ttf" />
+    <None Include="Assets\Fonts\ebrimabd.ttf" />
+    <None Include="Assets\Fonts\ega40737.fon" />
+    <None Include="Assets\Fonts\ega40850.fon" />
+    <None Include="Assets\Fonts\ega40852.fon" />
+    <None Include="Assets\Fonts\ega40857.fon" />
+    <None Include="Assets\Fonts\ega40866.fon" />
+    <None Include="Assets\Fonts\ega40869.fon" />
+    <None Include="Assets\Fonts\ega40woa.fon" />
+    <None Include="Assets\Fonts\ega80737.fon" />
+    <None Include="Assets\Fonts\ega80850.fon" />
+    <None Include="Assets\Fonts\ega80852.fon" />
+    <None Include="Assets\Fonts\ega80857.fon" />
+    <None Include="Assets\Fonts\ega80866.fon" />
+    <None Include="Assets\Fonts\ega80869.fon" />
+    <None Include="Assets\Fonts\ega80woa.fon" />
+    <None Include="Assets\Fonts\ELEPHNT.TTF" />
+    <None Include="Assets\Fonts\ELEPHNTI.TTF" />
+    <None Include="Assets\Fonts\ENGR.TTF" />
+    <None Include="Assets\Fonts\ERASBD.TTF" />
+    <None Include="Assets\Fonts\ERASDEMI.TTF" />
+    <None Include="Assets\Fonts\ERASLGHT.TTF" />
+    <None Include="Assets\Fonts\ERASMD.TTF" />
+    <None Include="Assets\Fonts\estre.ttf" />
+    <None Include="Assets\Fonts\euphemia.ttf" />
+    <None Include="Assets\Fonts\FELIXTI.TTF" />
+    <None Include="Assets\Fonts\FORTE.TTF" />
+    <None Include="Assets\Fonts\FRABK.TTF" />
+    <None Include="Assets\Fonts\FRABKIT.TTF" />
+    <None Include="Assets\Fonts\FRADM.TTF" />
+    <None Include="Assets\Fonts\FRADMCN.TTF" />
+    <None Include="Assets\Fonts\FRADMIT.TTF" />
+    <None Include="Assets\Fonts\FRAHV.TTF" />
+    <None Include="Assets\Fonts\FRAHVIT.TTF" />
+    <None Include="Assets\Fonts\framd.ttf" />
+    <None Include="Assets\Fonts\FRAMDCN.TTF" />
+    <None Include="Assets\Fonts\framdit.ttf" />
+    <None Include="Assets\Fonts\frank.ttf" />
+    <None Include="Assets\Fonts\FREESCPT.TTF" />
+    <None Include="Assets\Fonts\FRSCRIPT.TTF" />
+    <None Include="Assets\Fonts\FTLTLT.TTF" />
+    <None Include="Assets\Fonts\Gabriola.ttf" />
+    <None Include="Assets\Fonts\gadugi.ttf" />
+    <None Include="Assets\Fonts\gadugib.ttf" />
+    <None Include="Assets\Fonts\GARA.TTF" />
+    <None Include="Assets\Fonts\GARABD.TTF" />
+    <None Include="Assets\Fonts\GARAIT.TTF" />
+    <None Include="Assets\Fonts\gautami.ttf" />
+    <None Include="Assets\Fonts\gautamib.ttf" />
+    <None Include="Assets\Fonts\georgia.ttf" />
+    <None Include="Assets\Fonts\georgiab.ttf" />
+    <None Include="Assets\Fonts\georgiai.ttf" />
+    <None Include="Assets\Fonts\georgiaz.ttf" />
+    <None Include="Assets\Fonts\GIGI.TTF" />
+    <None Include="Assets\Fonts\GILBI___.TTF" />
+    <None Include="Assets\Fonts\GILB____.TTF" />
+    <None Include="Assets\Fonts\GILC____.TTF" />
+    <None Include="Assets\Fonts\GILI____.TTF" />
+    <None Include="Assets\Fonts\GILLUBCD.TTF" />
+    <None Include="Assets\Fonts\GILSANUB.TTF" />
+    <None Include="Assets\Fonts\GIL_____.TTF" />
+    <None Include="Assets\Fonts\gisha.ttf" />
+    <None Include="Assets\Fonts\gishabd.ttf" />
+    <None Include="Assets\Fonts\GLECB.TTF" />
+    <None Include="Assets\Fonts\GlobalMonospace.CompositeFont" />
+    <None Include="Assets\Fonts\GlobalSansSerif.CompositeFont" />
+    <None Include="Assets\Fonts\GlobalSerif.CompositeFont" />
+    <None Include="Assets\Fonts\GlobalUserInterface.CompositeFont" />
+    <None Include="Assets\Fonts\GLSNECB.TTF" />
+    <None Include="Assets\Fonts\GOTHIC.TTF" />
+    <None Include="Assets\Fonts\GOTHICB.TTF" />
+    <None Include="Assets\Fonts\GOTHICBI.TTF" />
+    <None Include="Assets\Fonts\GOTHICI.TTF" />
+    <None Include="Assets\Fonts\GOUDOS.TTF" />
+    <None Include="Assets\Fonts\GOUDOSB.TTF" />
+    <None Include="Assets\Fonts\GOUDOSI.TTF" />
+    <None Include="Assets\Fonts\GOUDYSTO.TTF" />
+    <None Include="Assets\Fonts\gulim.ttc" />
+    <None Include="Assets\Fonts\h8514fix.fon" />
+    <None Include="Assets\Fonts\h8514oem.fon" />
+    <None Include="Assets\Fonts\h8514sys.fon" />
+    <None Include="Assets\Fonts\HARLOWSI.TTF" />
+    <None Include="Assets\Fonts\HARNGTON.TTF" />
+    <None Include="Assets\Fonts\HATTEN.TTF" />
+    <None Include="Assets\Fonts\himalaya.ttf" />
+    <None Include="Assets\Fonts\HTOWERT.TTF" />
+    <None Include="Assets\Fonts\HTOWERTI.TTF" />
+    <None Include="Assets\Fonts\hvgafix.fon" />
+    <None Include="Assets\Fonts\hvgasys.fon" />
+    <None Include="Assets\Fonts\impact.ttf" />
+    <None Include="Assets\Fonts\IMPRISHA.TTF" />
+    <None Include="Assets\Fonts\INFROMAN.TTF" />
+    <None Include="Assets\Fonts\iskpota.ttf" />
+    <None Include="Assets\Fonts\iskpotab.ttf" />
+    <None Include="Assets\Fonts\ITCBLKAD.TTF" />
+    <None Include="Assets\Fonts\ITCEDSCR.TTF" />
+    <None Include="Assets\Fonts\ITCKRIST.TTF" />
+    <None Include="Assets\Fonts\j8514fix.fon" />
+    <None Include="Assets\Fonts\j8514oem.fon" />
+    <None Include="Assets\Fonts\j8514sys.fon" />
+    <None Include="Assets\Fonts\javatext.ttf" />
+    <None Include="Assets\Fonts\JOKERMAN.TTF" />
+    <None Include="Assets\Fonts\jsmalle.fon" />
+    <None Include="Assets\Fonts\jsmallf.fon" />
+    <None Include="Assets\Fonts\JUICE___.TTF" />
+    <None Include="Assets\Fonts\jvgafix.fon" />
+    <None Include="Assets\Fonts\jvgasys.fon" />
+    <None Include="Assets\Fonts\kaiu.ttf" />
+    <None Include="Assets\Fonts\kalinga.ttf" />
+    <None Include="Assets\Fonts\kalingab.ttf" />
+    <None Include="Assets\Fonts\kartika.ttf" />
+    <None Include="Assets\Fonts\kartikab.ttf" />
+    <None Include="Assets\Fonts\KhmerUI.ttf" />
+    <None Include="Assets\Fonts\KhmerUIb.ttf" />
+    <None Include="Assets\Fonts\kokila.ttf" />
+    <None Include="Assets\Fonts\kokilab.ttf" />
+    <None Include="Assets\Fonts\kokilabi.ttf" />
+    <None Include="Assets\Fonts\kokilai.ttf" />
+    <None Include="Assets\Fonts\KUNSTLER.TTF" />
+    <None Include="Assets\Fonts\LaoUI.ttf" />
+    <None Include="Assets\Fonts\LaoUIb.ttf" />
+    <None Include="Assets\Fonts\latha.ttf" />
+    <None Include="Assets\Fonts\lathab.ttf" />
+    <None Include="Assets\Fonts\LATINWD.TTF" />
+    <None Include="Assets\Fonts\LBRITE.TTF" />
+    <None Include="Assets\Fonts\LBRITED.TTF" />
+    <None Include="Assets\Fonts\LBRITEDI.TTF" />
+    <None Include="Assets\Fonts\LBRITEI.TTF" />
+    <None Include="Assets\Fonts\LCALLIG.TTF" />
+    <None Include="Assets\Fonts\LeelaUIb.ttf" />
+    <None Include="Assets\Fonts\leelawad.ttf" />
+    <None Include="Assets\Fonts\leelawdb.ttf" />
+    <None Include="Assets\Fonts\LeelawUI.ttf" />
+    <None Include="Assets\Fonts\LeelUIsl.ttf" />
+    <None Include="Assets\Fonts\LFAX.TTF" />
+    <None Include="Assets\Fonts\LFAXD.TTF" />
+    <None Include="Assets\Fonts\LFAXDI.TTF" />
+    <None Include="Assets\Fonts\LFAXI.TTF" />
+    <None Include="Assets\Fonts\LHANDW.TTF" />
+    <None Include="Assets\Fonts\LSANS.TTF" />
+    <None Include="Assets\Fonts\LSANSD.TTF" />
+    <None Include="Assets\Fonts\LSANSDI.TTF" />
+    <None Include="Assets\Fonts\LSANSI.TTF" />
+    <None Include="Assets\Fonts\LTYPE.TTF" />
+    <None Include="Assets\Fonts\LTYPEB.TTF" />
+    <None Include="Assets\Fonts\LTYPEBO.TTF" />
+    <None Include="Assets\Fonts\LTYPEO.TTF" />
+    <None Include="Assets\Fonts\lucon.ttf" />
+    <None Include="Assets\Fonts\lvnm.ttf" />
+    <None Include="Assets\Fonts\lvnmbd.ttf" />
+    <None Include="Assets\Fonts\l_10646.ttf" />
+    <None Include="Assets\Fonts\MAGNETOB.TTF" />
+    <None Include="Assets\Fonts\MAIAN.TTF" />
+    <None Include="Assets\Fonts\majalla.ttf" />
+    <None Include="Assets\Fonts\majallab.ttf" />
+    <None Include="Assets\Fonts\malgun.ttf" />
+    <None Include="Assets\Fonts\malgunbd.ttf" />
+    <None Include="Assets\Fonts\mangal.ttf" />
+    <None Include="Assets\Fonts\mangalb.ttf" />
+    <None Include="Assets\Fonts\marlett.ttf" />
+    <None Include="Assets\Fonts\MATURASC.TTF" />
+    <None Include="Assets\Fonts\meiryo.ttc" />
+    <None Include="Assets\Fonts\meiryob.ttc" />
+    <None Include="Assets\Fonts\micross.ttf" />
+    <None Include="Assets\Fonts\mingliu.ttc" />
+    <None Include="Assets\Fonts\mingliub.ttc" />
+    <None Include="Assets\Fonts\MISTRAL.TTF" />
+    <None Include="Assets\Fonts\mmrtext.ttf" />
+    <None Include="Assets\Fonts\mmrtextb.ttf" />
+    <None Include="Assets\Fonts\MOD20.TTF" />
+    <None Include="Assets\Fonts\modern.fon" />
+    <None Include="Assets\Fonts\monbaiti.ttf" />
+    <None Include="Assets\Fonts\moolbor.ttf" />
+    <None Include="Assets\Fonts\mriam.ttf" />
+    <None Include="Assets\Fonts\mriamc.ttf" />
+    <None Include="Assets\Fonts\msgothic.ttc" />
+    <None Include="Assets\Fonts\msjh.ttc" />
+    <None Include="Assets\Fonts\msjhbd.ttc" />
+    <None Include="Assets\Fonts\msjhl.ttc" />
+    <None Include="Assets\Fonts\MSMHei-Bold.ttf" />
+    <None Include="Assets\Fonts\MSMHei.ttf" />
+    <None Include="Assets\Fonts\msmincho.ttc" />
+    <None Include="Assets\Fonts\MSNeoGothic-Bold.ttf" />
+    <None Include="Assets\Fonts\MSNeoGothic.ttf" />
+    <None Include="Assets\Fonts\msuighub.ttf" />
+    <None Include="Assets\Fonts\msuighur.ttf" />
+    <None Include="Assets\Fonts\msyh.ttc" />
+    <None Include="Assets\Fonts\msyhbd.ttc" />
+    <None Include="Assets\Fonts\msyhl.ttc" />
+    <None Include="Assets\Fonts\msyi.ttf" />
+    <None Include="Assets\Fonts\MTCORSVA.TTF" />
+    <None Include="Assets\Fonts\mvboli.ttf" />
+    <None Include="Assets\Fonts\NIAGENG.TTF" />
+    <None Include="Assets\Fonts\NIAGSOL.TTF" />
+    <None Include="Assets\Fonts\Nirmala.ttf" />
+    <None Include="Assets\Fonts\NirmalaB.ttf" />
+    <None Include="Assets\Fonts\NirmalaS.ttf" />
+    <None Include="Assets\Fonts\nrkis.ttf" />
+    <None Include="Assets\Fonts\ntailu.ttf" />
+    <None Include="Assets\Fonts\ntailub.ttf" />
+    <None Include="Assets\Fonts\nyala.ttf" />
+    <None Include="Assets\Fonts\OCRAEXT.TTF" />
+    <None Include="Assets\Fonts\OLDENGL.TTF" />
+    <None Include="Assets\Fonts\ONYX.TTF" />
+    <None Include="Assets\Fonts\OUTLOOK.TTF" />
+    <None Include="Assets\Fonts\pala.ttf" />
+    <None Include="Assets\Fonts\palab.ttf" />
+    <None Include="Assets\Fonts\palabi.ttf" />
+    <None Include="Assets\Fonts\palai.ttf" />
+    <None Include="Assets\Fonts\PALSCRI.TTF" />
+    <None Include="Assets\Fonts\PAPYRUS.TTF" />
+    <None Include="Assets\Fonts\PARCHM.TTF" />
+    <None Include="Assets\Fonts\PERBI___.TTF" />
+    <None Include="Assets\Fonts\PERB____.TTF" />
+    <None Include="Assets\Fonts\PERI____.TTF" />
+    <None Include="Assets\Fonts\PERTIBD.TTF" />
+    <None Include="Assets\Fonts\PERTILI.TTF" />
+    <None Include="Assets\Fonts\PER_____.TTF" />
+    <None Include="Assets\Fonts\phagspa.ttf" />
+    <None Include="Assets\Fonts\phagspab.ttf" />
+    <None Include="Assets\Fonts\plantc.ttf" />
+    <None Include="Assets\Fonts\PLAYBILL.TTF" />
+    <None Include="Assets\Fonts\POORICH.TTF" />
+    <None Include="Assets\Fonts\PRISTINA.TTF" />
+    <None Include="Assets\Fonts\raavi.ttf" />
+    <None Include="Assets\Fonts\raavib.ttf" />
+    <None Include="Assets\Fonts\RAGE.TTF" />
+    <None Include="Assets\Fonts\RAVIE.TTF" />
+    <None Include="Assets\Fonts\REFSAN.TTF" />
+    <None Include="Assets\Fonts\REFSPCL.TTF" />
+    <None Include="Assets\Fonts\ROCCB___.TTF" />
+    <None Include="Assets\Fonts\ROCC____.TTF" />
+    <None Include="Assets\Fonts\ROCK.TTF" />
+    <None Include="Assets\Fonts\ROCKB.TTF" />
+    <None Include="Assets\Fonts\ROCKBI.TTF" />
+    <None Include="Assets\Fonts\ROCKEB.TTF" />
+    <None Include="Assets\Fonts\ROCKI.TTF" />
+    <None Include="Assets\Fonts\rod.ttf" />
+    <None Include="Assets\Fonts\roman.fon" />
+    <None Include="Assets\Fonts\s8514fix.fon" />
+    <None Include="Assets\Fonts\s8514oem.fon" />
+    <None Include="Assets\Fonts\s8514sys.fon" />
+    <None Include="Assets\Fonts\SCHLBKB.TTF" />
+    <None Include="Assets\Fonts\SCHLBKBI.TTF" />
+    <None Include="Assets\Fonts\SCHLBKI.TTF" />
+    <None Include="Assets\Fonts\script.fon" />
+    <None Include="Assets\Fonts\SCRIPTBL.TTF" />
+    <None Include="Assets\Fonts\SegoeMarker.ttf" />
+    <None Include="Assets\Fonts\segoepr.ttf" />
+    <None Include="Assets\Fonts\segoeprb.ttf" />
+    <None Include="Assets\Fonts\segoesc.ttf" />
+    <None Include="Assets\Fonts\segoescb.ttf" />
+    <None Include="Assets\Fonts\segoeui.ttf" />
+    <None Include="Assets\Fonts\segoeuib.ttf" />
+    <None Include="Assets\Fonts\segoeuii.ttf" />
+    <None Include="Assets\Fonts\segoeuil.ttf" />
+    <None Include="Assets\Fonts\segoeuisl.ttf" />
+    <None Include="Assets\Fonts\segoeuiz.ttf" />
+    <None Include="Assets\Fonts\SegoeWP-Black.ttf" />
+    <None Include="Assets\Fonts\SegoeWP-Bold.ttf" />
+    <None Include="Assets\Fonts\SegoeWP-Light.ttf" />
+    <None Include="Assets\Fonts\SegoeWP-Semibold.ttf" />
+    <None Include="Assets\Fonts\SegoeWP-Semilight.ttf" />
+    <None Include="Assets\Fonts\SegoeWP.ttf" />
+    <None Include="Assets\Fonts\seguibl.ttf" />
+    <None Include="Assets\Fonts\seguibli.ttf" />
+    <None Include="Assets\Fonts\seguiemj.ttf" />
+    <None Include="Assets\Fonts\seguili.ttf" />
+    <None Include="Assets\Fonts\seguisb.ttf" />
+    <None Include="Assets\Fonts\seguisbi.ttf" />
+    <None Include="Assets\Fonts\seguisli.ttf" />
+    <None Include="Assets\Fonts\seguisym.ttf" />
+    <None Include="Assets\Fonts\sere1255.fon" />
+    <None Include="Assets\Fonts\sere1256.fon" />
+    <None Include="Assets\Fonts\sere1257.fon" />
+    <None Include="Assets\Fonts\serf1255.fon" />
+    <None Include="Assets\Fonts\serf1256.fon" />
+    <None Include="Assets\Fonts\serf1257.fon" />
+    <None Include="Assets\Fonts\serife.fon" />
+    <None Include="Assets\Fonts\serifee.fon" />
+    <None Include="Assets\Fonts\serifeg.fon" />
+    <None Include="Assets\Fonts\serifer.fon" />
+    <None Include="Assets\Fonts\serifet.fon" />
+    <None Include="Assets\Fonts\seriff.fon" />
+    <None Include="Assets\Fonts\seriffe.fon" />
+    <None Include="Assets\Fonts\seriffg.fon" />
+    <None Include="Assets\Fonts\seriffr.fon" />
+    <None Include="Assets\Fonts\serifft.fon" />
+    <None Include="Assets\Fonts\Shonar.ttf" />
+    <None Include="Assets\Fonts\Shonarb.ttf" />
+    <None Include="Assets\Fonts\SHOWG.TTF" />
+    <None Include="Assets\Fonts\shruti.ttf" />
+    <None Include="Assets\Fonts\shrutib.ttf" />
+    <None Include="Assets\Fonts\simfang.ttf" />
+    <None Include="Assets\Fonts\simhei.ttf" />
+    <None Include="Assets\Fonts\simkai.ttf" />
+    <None Include="Assets\Fonts\simpbdo.ttf" />
+    <None Include="Assets\Fonts\simpfxo.ttf" />
+    <None Include="Assets\Fonts\simpo.ttf" />
+    <None Include="Assets\Fonts\simsun.ttc" />
+    <None Include="Assets\Fonts\simsunb.ttf" />
+    <None Include="Assets\Fonts\Sitka.ttc" />
+    <None Include="Assets\Fonts\SitkaB.ttc" />
+    <None Include="Assets\Fonts\SitkaI.ttc" />
+    <None Include="Assets\Fonts\SitkaZ.ttc" />
+    <None Include="Assets\Fonts\SketchFlow Print.ttf" />
+    <None Include="Assets\Fonts\smae1255.fon" />
+    <None Include="Assets\Fonts\smae1256.fon" />
+    <None Include="Assets\Fonts\smae1257.fon" />
+    <None Include="Assets\Fonts\smaf1255.fon" />
+    <None Include="Assets\Fonts\smaf1256.fon" />
+    <None Include="Assets\Fonts\smaf1257.fon" />
+    <None Include="Assets\Fonts\smalle.fon" />
+    <None Include="Assets\Fonts\smallee.fon" />
+    <None Include="Assets\Fonts\smalleg.fon" />
+    <None Include="Assets\Fonts\smaller.fon" />
+    <None Include="Assets\Fonts\smallet.fon" />
+    <None Include="Assets\Fonts\smallf.fon" />
+    <None Include="Assets\Fonts\smallfe.fon" />
+    <None Include="Assets\Fonts\smallfg.fon" />
+    <None Include="Assets\Fonts\smallfr.fon" />
+    <None Include="Assets\Fonts\smallft.fon" />
+    <None Include="Assets\Fonts\SNAP____.TTF" />
+    <None Include="Assets\Fonts\SourceCodePro-Black.ttf" />
+    <None Include="Assets\Fonts\SourceCodePro-Bold.ttf" />
+    <None Include="Assets\Fonts\SourceCodePro-ExtraLight.ttf" />
+    <None Include="Assets\Fonts\SourceCodePro-Light.ttf" />
+    <None Include="Assets\Fonts\SourceCodePro-Regular.ttf" />
+    <None Include="Assets\Fonts\SourceCodePro-Semibold.ttf" />
+    <None Include="Assets\Fonts\ssee1255.fon" />
+    <None Include="Assets\Fonts\ssee1256.fon" />
+    <None Include="Assets\Fonts\ssee1257.fon" />
+    <None Include="Assets\Fonts\ssee874.fon" />
+    <None Include="Assets\Fonts\ssef1255.fon" />
+    <None Include="Assets\Fonts\ssef1256.fon" />
+    <None Include="Assets\Fonts\ssef1257.fon" />
+    <None Include="Assets\Fonts\ssef874.fon" />
+    <None Include="Assets\Fonts\sserife.fon" />
+    <None Include="Assets\Fonts\sserifee.fon" />
+    <None Include="Assets\Fonts\sserifeg.fon" />
+    <None Include="Assets\Fonts\sserifer.fon" />
+    <None Include="Assets\Fonts\sserifet.fon" />
+    <None Include="Assets\Fonts\sseriff.fon" />
+    <None Include="Assets\Fonts\sseriffe.fon" />
+    <None Include="Assets\Fonts\sseriffg.fon" />
+    <None Include="Assets\Fonts\sseriffr.fon" />
+    <None Include="Assets\Fonts\sserifft.fon" />
+    <None Include="Assets\Fonts\StaticCache.dat" />
+    <None Include="Assets\Fonts\STENCIL.TTF" />
+    <None Include="Assets\Fonts\svgafix.fon" />
+    <None Include="Assets\Fonts\svgasys.fon" />
+    <None Include="Assets\Fonts\sylfaen.ttf" />
+    <None Include="Assets\Fonts\symbol.ttf" />
+    <None Include="Assets\Fonts\tahoma.ttf" />
+    <None Include="Assets\Fonts\tahomabd.ttf" />
+    <None Include="Assets\Fonts\taile.ttf" />
+    <None Include="Assets\Fonts\taileb.ttf" />
+    <None Include="Assets\Fonts\TCBI____.TTF" />
+    <None Include="Assets\Fonts\TCB_____.TTF" />
+    <None Include="Assets\Fonts\TCCB____.TTF" />
+    <None Include="Assets\Fonts\TCCEB.TTF" />
+    <None Include="Assets\Fonts\TCCM____.TTF" />
+    <None Include="Assets\Fonts\TCMI____.TTF" />
+    <None Include="Assets\Fonts\TCM_____.TTF" />
+    <None Include="Assets\Fonts\TEMPSITC.TTF" />
+    <None Include="Assets\Fonts\times.ttf" />
+    <None Include="Assets\Fonts\timesbd.ttf" />
+    <None Include="Assets\Fonts\timesbi.ttf" />
+    <None Include="Assets\Fonts\timesi.ttf" />
+    <None Include="Assets\Fonts\tradbdo.ttf" />
+    <None Include="Assets\Fonts\trado.ttf" />
+    <None Include="Assets\Fonts\trebuc.ttf" />
+    <None Include="Assets\Fonts\trebucbd.ttf" />
+    <None Include="Assets\Fonts\trebucbi.ttf" />
+    <None Include="Assets\Fonts\trebucit.ttf" />
+    <None Include="Assets\Fonts\TSPECIAL1.TTF" />
+    <None Include="Assets\Fonts\tunga.ttf" />
+    <None Include="Assets\Fonts\tungab.ttf" />
+    <None Include="Assets\Fonts\upcdb.ttf" />
+    <None Include="Assets\Fonts\upcdbi.ttf" />
+    <None Include="Assets\Fonts\upcdi.ttf" />
+    <None Include="Assets\Fonts\upcdl.ttf" />
+    <None Include="Assets\Fonts\upceb.ttf" />
+    <None Include="Assets\Fonts\upcebi.ttf" />
+    <None Include="Assets\Fonts\upcei.ttf" />
+    <None Include="Assets\Fonts\upcel.ttf" />
+    <None Include="Assets\Fonts\upcfb.ttf" />
+    <None Include="Assets\Fonts\upcfbi.ttf" />
+    <None Include="Assets\Fonts\upcfi.ttf" />
+    <None Include="Assets\Fonts\upcfl.ttf" />
+    <None Include="Assets\Fonts\upcib.ttf" />
+    <None Include="Assets\Fonts\upcibi.ttf" />
+    <None Include="Assets\Fonts\upcii.ttf" />
+    <None Include="Assets\Fonts\upcil.ttf" />
+    <None Include="Assets\Fonts\upcjb.ttf" />
+    <None Include="Assets\Fonts\upcjbi.ttf" />
+    <None Include="Assets\Fonts\upcji.ttf" />
+    <None Include="Assets\Fonts\upcjl.ttf" />
+    <None Include="Assets\Fonts\upckb.ttf" />
+    <None Include="Assets\Fonts\upckbi.ttf" />
+    <None Include="Assets\Fonts\upcki.ttf" />
+    <None Include="Assets\Fonts\upckl.ttf" />
+    <None Include="Assets\Fonts\upclb.ttf" />
+    <None Include="Assets\Fonts\upclbi.ttf" />
+    <None Include="Assets\Fonts\upcli.ttf" />
+    <None Include="Assets\Fonts\upcll.ttf" />
+    <None Include="Assets\Fonts\UrdType.ttf" />
+    <None Include="Assets\Fonts\UrdTypeb.ttf" />
+    <None Include="Assets\Fonts\utsaah.ttf" />
+    <None Include="Assets\Fonts\utsaahb.ttf" />
+    <None Include="Assets\Fonts\utsaahbi.ttf" />
+    <None Include="Assets\Fonts\utsaahi.ttf" />
+    <None Include="Assets\Fonts\Vani.ttf" />
+    <None Include="Assets\Fonts\Vanib.ttf" />
+    <None Include="Assets\Fonts\verdana.ttf" />
+    <None Include="Assets\Fonts\verdanab.ttf" />
+    <None Include="Assets\Fonts\verdanai.ttf" />
+    <None Include="Assets\Fonts\verdanaz.ttf" />
+    <None Include="Assets\Fonts\vga737.fon" />
+    <None Include="Assets\Fonts\vga775.fon" />
+    <None Include="Assets\Fonts\vga850.fon" />
+    <None Include="Assets\Fonts\vga852.fon" />
+    <None Include="Assets\Fonts\vga855.fon" />
+    <None Include="Assets\Fonts\vga857.fon" />
+    <None Include="Assets\Fonts\vga860.fon" />
+    <None Include="Assets\Fonts\vga861.fon" />
+    <None Include="Assets\Fonts\vga863.fon" />
+    <None Include="Assets\Fonts\vga865.fon" />
+    <None Include="Assets\Fonts\vga866.fon" />
+    <None Include="Assets\Fonts\vga869.fon" />
+    <None Include="Assets\Fonts\vga932.fon" />
+    <None Include="Assets\Fonts\vga936.fon" />
+    <None Include="Assets\Fonts\vga949.fon" />
+    <None Include="Assets\Fonts\vga950.fon" />
+    <None Include="Assets\Fonts\vgaf1255.fon" />
+    <None Include="Assets\Fonts\vgaf1256.fon" />
+    <None Include="Assets\Fonts\vgaf1257.fon" />
+    <None Include="Assets\Fonts\vgaf874.fon" />
+    <None Include="Assets\Fonts\vgafix.fon" />
+    <None Include="Assets\Fonts\vgafixe.fon" />
+    <None Include="Assets\Fonts\vgafixg.fon" />
+    <None Include="Assets\Fonts\vgafixr.fon" />
+    <None Include="Assets\Fonts\vgafixt.fon" />
+    <None Include="Assets\Fonts\vgaoem.fon" />
+    <None Include="Assets\Fonts\vgas1255.fon" />
+    <None Include="Assets\Fonts\vgas1256.fon" />
+    <None Include="Assets\Fonts\vgas1257.fon" />
+    <None Include="Assets\Fonts\vgas874.fon" />
+    <None Include="Assets\Fonts\vgasys.fon" />
+    <None Include="Assets\Fonts\vgasyse.fon" />
+    <None Include="Assets\Fonts\vgasysg.fon" />
+    <None Include="Assets\Fonts\vgasysr.fon" />
+    <None Include="Assets\Fonts\vgasyst.fon" />
+    <None Include="Assets\Fonts\vijaya.ttf" />
+    <None Include="Assets\Fonts\vijayab.ttf" />
+    <None Include="Assets\Fonts\VINERITC.TTF" />
+    <None Include="Assets\Fonts\VIVALDII.TTF" />
+    <None Include="Assets\Fonts\VLADIMIR.TTF" />
+    <None Include="Assets\Fonts\vrinda.ttf" />
+    <None Include="Assets\Fonts\vrindab.ttf" />
+    <None Include="Assets\Fonts\webdings.ttf" />
+    <None Include="Assets\Fonts\wingding.ttf" />
+    <None Include="Assets\Fonts\WINGDNG2.TTF" />
+    <None Include="Assets\Fonts\WINGDNG3.TTF" />
+    <None Include="Assets\Fonts\yugothib.ttf" />
+    <None Include="Assets\Fonts\YuGothic-Bold.ttf" />
+    <None Include="Assets\Fonts\yugothic.ttf" />
+    <None Include="Assets\Fonts\yugothil.ttf" />
+    <None Include="Assets\Fonts\yumin.ttf" />
+    <None Include="Assets\Fonts\yumindb.ttf" />
+    <None Include="Assets\Fonts\yuminl.ttf" />
+    <None Include="Assets\Fonts\ZWAdobeF.TTF" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -155,6 +864,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Fonts\fms_metadata.xml" />
     <Content Include="Assets\Images\ObjectsGrid\ball.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon2.png" />
@@ -203,6 +913,7 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ReadMe.Coding4Fun.Toolkit.txt" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
@@ -220,6 +931,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Audio">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Audio.2.0.8\lib\windowsphone8\Coding4Fun.Toolkit.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Net">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Net.2.0.8\lib\windowsphone8\Coding4Fun.Toolkit.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Storage">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Storage.2.0.8\lib\windowsphone8\Coding4Fun.Toolkit.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
@@ -229,10 +955,26 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Phone">
       <HintPath>..\packages\WPToolkitTestFx.4.2012.11.14\lib\wp8\Microsoft.VisualStudio.QualityTools.UnitTesting.Phone.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Venetasoft.WP.Net.SMTP">
       <HintPath>..\..\..\..\..\..\Downloads\MailMessage_Trial_1.3.1 (1)\MailMessage_Trial\Bin\Debug\Venetasoft.WP.Net.SMTP.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -243,4 +985,9 @@
   </Target>
   -->
   <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

@@ -16,6 +16,7 @@ using System.IO;
 using System.Windows.Media;
 using Microsoft.Phone.Tasks;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace eGreetings
 {
@@ -31,6 +32,8 @@ namespace eGreetings
             InitializeComponent();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 75);//Allows 150 milliseconds to click an object
             timer.Tick += timer_Tick;
+            canvasImage.Width = Application.Current.Host.Content.ActualHeight;
+            canvasImage.Height = Application.Current.Host.Content.ActualWidth;
             //App.Current.editingPage = this;
         }
 
@@ -68,10 +71,17 @@ namespace eGreetings
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            imgBackgroundImage.Source = App.Current.selectedImage.Source;
-            imgBackgroundImage.MaxWidth = Application.Current.Host.Content.ActualHeight;
-            imgBackgroundImage.MaxHeight = Application.Current.Host.Content.ActualWidth;
+        {////https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ
+            //Image i = new Image() { Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute)) };
+            imgBackgroundImage.Source = App.Current.selectedImage.Source;// new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)); //Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute));// App.Current.selectedImage.Source;
+            //imgBackgroundImage.MaxWidth = Application.Current.Host.Content.ActualHeight;
+            //imgBackgroundImage.MaxHeight = Application.Current.Host.Content.ActualWidth;
+
+            //List<Image> listBoxImages = new List<Image>();
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings1.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings3.jpg", UriKind.Absolute)) });
         }
 
         private void btnObjects_Click(object sender, RoutedEventArgs e)
@@ -88,17 +98,70 @@ namespace eGreetings
 
         private void saveImage()
         {
-            IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
-
-            using (IsolatedStorageFileStream isoStream2 = new IsolatedStorageFileStream("new.jpg", FileMode.OpenOrCreate, isoStore))
+            //I found the follwing code to convert an image to a base64 string at: http://kodierer.blogspot.ie/2010/12/sending-windows-phone-screenshots-in.html
+            // Render the element at the maximum possible size
+            ScaleTransform transform = null;
+            //if (canvasImage.ActualWidth * canvasImage.ActualHeight > 240 * 400)
+            //{
+            //    // Calculate a uniform scale with the minimum possible size
+            //    var scaleX = 240.0 / canvasImage.ActualWidth;
+            //    var scaleY = 400.0 / canvasImage.ActualHeight;
+            //    var scale = scaleX < scaleY ? scaleX : scaleY;
+            //    transform = new ScaleTransform { ScaleX = scale, ScaleY = scale };
+            //}
+            var wb = new WriteableBitmap(canvasImage, transform);
+            string imageStringToSave;
+            using (var memoryStream = new MemoryStream())
             {
-                WriteableBitmap wbmp = new WriteableBitmap(canvasImage, null);
-                wbmp.SaveJpeg(isoStream2, wbmp.PixelWidth, wbmp.PixelHeight, 0, 100);
+                // Encode the screenshot as JPEG with a quality of 70%
+                wb.SaveJpeg(memoryStream, wb.PixelWidth, wb.PixelHeight, 0, 70);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+               
+                // Convert binary data to Base64 string
+                var bytes = memoryStream.ToArray();
+                App.Current.imageToSend = bytes;
+                var base64String = Convert.ToBase64String(bytes);
+                imageStringToSave = base64String;
+                
+                //MessageBox.Show(base64String);
+                //byte[] img = Convert.FromBase64String(base64String);
+
+                //imageToSave.Source = base64image(base64String);
+                //NavigationService.Navigate(new Uri("/Page1.xaml", UriKind.Relative));
             }
-            txtImagedSaved.Visibility = Visibility.Visible;
-            txtImagedSaved.Opacity = 1;
-            DisplayImageSavedText = true;
-            timer.Start();
+                        
+
+            //Uri address = new Uri("http://egreetings.me");
+            //string data = "/api/Values?base64ImageString=" + imageStringToSave;
+            //WebClient client = new WebClient();
+            //try
+            //{
+            //    client.UploadStringAsync(address, "POST", data);
+            //    client.UploadStringCompleted += client_UploadStringCompleted;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+        }
+
+        private void client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());
+        }
+
+        public static BitmapImage base64image(string base64string)
+        {
+            //Found this method that converts the base64 string back to a Bitmap Image at: http://stackoverflow.com/questions/14539005/convert-base64-string-to-image-in-c-sharp-on-windows-phone
+            byte[] fileBytes = Convert.FromBase64String(base64string);
+
+            using (MemoryStream ms = new MemoryStream(fileBytes, 0, fileBytes.Length))
+            {
+                ms.Write(fileBytes, 0, fileBytes.Length);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(ms);
+                return bitmapImage;
+            }
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -111,7 +174,7 @@ namespace eGreetings
 
         private void btnText_Click(object sender, RoutedEventArgs e)
         {
-
+            insertTextModal.Visibility = Visibility.Visible;
         }
 
         private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -160,7 +223,8 @@ namespace eGreetings
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            //Do your work here
+            //Do your work here            
+            
             base.OnBackKeyPress(e);
             NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
             NavigationService.RemoveBackEntry();
@@ -182,6 +246,44 @@ namespace eGreetings
             NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
             spModal.Visibility = Visibility.Collapsed;
             ContentPanel.Opacity = 1;
-        }  
+        }
+
+        private void btnAddText(object sender, RoutedEventArgs e)
+        {
+            int fontSize = 0;
+            FontFamily fontFamily = new FontFamily("Showcard Gothic");
+            switch (lpFontSize.SelectedIndex)
+            {
+                case 0:
+                    fontSize = 28;
+                    break;
+                case 1:
+                    fontSize = 36;
+                    break;
+                case 2:
+                    fontSize = 54;
+                    break;
+                case 3:
+                    fontSize = 72;
+                    break;
+            }
+
+            TextBlock txtNew = new TextBlock() { Text = txtMessage.Text, FontSize = fontSize, Foreground = new SolidColorBrush(csFontColor.Color), FontFamily = new FontFamily("/Assets/Fonts/SHOWG.TTF#SHOWG") }; //+ (((ListPicker)lpFontFamily).SelectedItem as ListPickerItem).Content.ToString() };
+            insertTextModal.Visibility = Visibility.Collapsed;
+            txtNew.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(OnManipulationDelta); 
+            canvasImage.Children.Add(txtNew);
+            Canvas.SetLeft(txtNew, Application.Current.Host.Content.ActualWidth / 2);
+            Canvas.SetTop(txtNew, Application.Current.Host.Content.ActualHeight / 4);
+        }
+
+        private void lpFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (txtMessage != null)
+            {
+                string fontName = (((ListPicker)sender).SelectedItem as ListPickerItem).Content.ToString();
+                FontFamily font = new FontFamily(fontName);
+                //txtMessage.FontFamily = font;
+            }
+        }
     }
 }

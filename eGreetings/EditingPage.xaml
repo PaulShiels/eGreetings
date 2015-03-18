@@ -6,8 +6,9 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:controls="clr-namespace:Coding4Fun.Phone.Controls.Toolkit;assembly=Coding4Fun.Phone.Controls.Toolkit" 
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:c4fToolkit="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -21,7 +22,7 @@
             <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-
+        
         <!--TitlePanel contains the name of the application and page title-->
         <!--//<StackPanel Orientation="Horizontal" Grid.Row="0">-->
                   
@@ -76,7 +77,7 @@
             </Grid>
         </ListBox>
         <Grid x:Name="ContentPanel" Margin="12,0,12,0">            
-            <Canvas x:Name="canvasImage" Grid.Column="1">
+            <Canvas x:Name="canvasImage">
                 <Image x:Name="imgBackgroundImage"></Image>
             </Canvas>
             <StackPanel x:Name="spToolsButtons"  Margin="0,10">
@@ -102,9 +103,40 @@
             </StackPanel>
         </Border>
 
+        <Border x:Name="insertTextModal" Visibility="Visible" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="650" MaxHeight="400" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
+            <StackPanel>
+                <TextBlock Text="Enter Text" FontSize="38" Margin="0,10" Foreground="White" FontWeight="ExtraBold" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Name="txtMessage" FontSize="30" TextWrapping="Wrap" Height="120" AcceptsReturn="True"></TextBox>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <c4fToolkit:ColorPicker Name="csFontColor" Margin="20,0" Height="190" Width="170"></c4fToolkit:ColorPicker>
+                    </StackPanel>
+                    <StackPanel Width="450">
+                    <StackPanel Margin="0,-20" Orientation="Horizontal">
+                    <toolkit:ListPicker Name="lpFontSize" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
+                        <toolkit:ListPickerItem Content="Small"/>
+                        <toolkit:ListPickerItem Content="Medium"/>
+                        <toolkit:ListPickerItem Content="Large"/>
+                        <toolkit:ListPickerItem Content="X-Large"/>
+                    </toolkit:ListPicker>
+                    <toolkit:ListPicker Name="lpFontFamily" SelectionChanged="lpFontFamily_SelectionChanged" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
+                        <toolkit:ListPickerItem Content="Curlz MT"/>
+                        <toolkit:ListPickerItem Content="Edwardian Script ITC"/>
+                        <toolkit:ListPickerItem Content="Freestyle Script"/>
+                        <toolkit:ListPickerItem Content="Showcard Gothic"/>
+                    </toolkit:ListPicker>
+                    </StackPanel>
+                    <Border BorderBrush="#6BA92A" Width="170" Background="LightBlue" CornerRadius="15,15,15,15" BorderThickness="0" HorizontalAlignment="Right" Margin="40,50">
+                        <Button x:Name="btnOk" FontSize="38" Foreground="White" Width="150" Content="OK" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnAddText"></Button>
+                    </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
         <Border x:Name="txtImagedSaved" Visibility="Collapsed" CornerRadius="10,10,10,10" Background="Pink" Grid.Column="1" Margin="20" HorizontalAlignment="Right" Width="250" Height="70" VerticalAlignment="Top">
             <TextBlock Text="Image Saved" FontSize="34" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="DarkRed"></TextBlock>
         </Border>
     </Grid>
 
-</phone:PhoneApplicationPage>
+</phone:PhoneApplicationPage> 
