@@ -149,3 +149,7 @@ C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debu
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\Dancing Script.ttf
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\Cucrl.ttf
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\konstytucyja_091.ttf
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\Rostock Kaligraph.ttf

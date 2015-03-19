@@ -120,10 +120,10 @@
                         <toolkit:ListPickerItem Content="X-Large"/>
                     </toolkit:ListPicker>
                     <toolkit:ListPicker Name="lpFontFamily" SelectionChanged="lpFontFamily_SelectionChanged" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
-                        <toolkit:ListPickerItem Content="Curlz MT"/>
-                        <toolkit:ListPickerItem Content="Edwardian Script ITC"/>
-                        <toolkit:ListPickerItem Content="Freestyle Script"/>
-                        <toolkit:ListPickerItem Content="Showcard Gothic"/>
+                        <toolkit:ListPickerItem Content="Curly"/>
+                        <toolkit:ListPickerItem Content="Dancing Script"/>
+                        <toolkit:ListPickerItem Content="konstytucyja"/>
+                        <toolkit:ListPickerItem Content="Rostock"/>
                     </toolkit:ListPicker>
                     </StackPanel>
                     <Border BorderBrush="#6BA92A" Width="170" Background="LightBlue" CornerRadius="15,15,15,15" BorderThickness="0" HorizontalAlignment="Right" Margin="40,50">

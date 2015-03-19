@@ -251,24 +251,40 @@ namespace eGreetings
         private void btnAddText(object sender, RoutedEventArgs e)
         {
             int fontSize = 0;
-            FontFamily fontFamily = new FontFamily("Showcard Gothic");
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
             switch (lpFontSize.SelectedIndex)
             {
                 case 0:
                     fontSize = 28;
                     break;
                 case 1:
-                    fontSize = 36;
+                    fontSize = 42;
                     break;
                 case 2:
-                    fontSize = 54;
+                    fontSize = 64;
                     break;
                 case 3:
-                    fontSize = 72;
+                    fontSize = 86;
                     break;
             }
 
-            TextBlock txtNew = new TextBlock() { Text = txtMessage.Text, FontSize = fontSize, Foreground = new SolidColorBrush(csFontColor.Color), FontFamily = new FontFamily("/Assets/Fonts/SHOWG.TTF#SHOWG") }; //+ (((ListPicker)lpFontFamily).SelectedItem as ListPickerItem).Content.ToString() };
+            switch (lpFontFamily.SelectedIndex)
+            {
+                case 0:
+                    fontFamily = new FontFamily("/Assets/Fonts/Cucrl.ttf#Curly Coryphaeus");
+                    break;
+                case 1:
+                    fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+                    break;
+                case 2:
+                    fontFamily = new FontFamily("/Assets/Fonts/konstytucyja_091.ttf#konstytucyja");
+                    break;
+                case 3:
+                    fontFamily = new FontFamily("/Assets/Fonts/Rostock Kaligraph.ttf#Rostock Kaligraph");
+                    break;
+            }
+
+            TextBlock txtNew = new TextBlock() { Text = txtMessage.Text, FontSize = fontSize, Foreground = new SolidColorBrush(csFontColor.Color), FontFamily = fontFamily }; //FontFamily = new FontFamily("/Assets/Fonts/BuxtonSketch.tff#Buxton Sketch") }; //+ (((ListPicker)lpFontFamily).SelectedItem as ListPickerItem).Content.ToString() };
             insertTextModal.Visibility = Visibility.Collapsed;
             txtNew.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(OnManipulationDelta); 
             canvasImage.Children.Add(txtNew);
