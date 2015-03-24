@@ -17,6 +17,7 @@ using System.Windows.Media;
 using Microsoft.Phone.Tasks;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using System.Windows.Shapes;
 
 namespace eGreetings
 {
@@ -26,6 +27,12 @@ namespace eGreetings
         private int tickCounter = 0;
         private int objectSelectionTickCounter;
         private bool DisplayImageSavedText;
+        private Point currentPoint;
+        private Point oldPoint;
+        private int drawingStrokeThickness = 9;
+        private Color drawingStrokeColour = Colors.White;
+        private bool eraserSelected;
+        private bool penSelected;
 
         public EditingPage()
         {
@@ -86,6 +93,7 @@ namespace eGreetings
 
         private void btnObjects_Click(object sender, RoutedEventArgs e)
         {
+            unselectTools();
             //Make the list of objects visible
             ContentPanel.Visibility = Visibility.Collapsed;
             lbxObjects.Visibility = Visibility.Visible;
@@ -93,6 +101,7 @@ namespace eGreetings
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            unselectTools();
             saveImage();            
         }
 
@@ -166,6 +175,7 @@ namespace eGreetings
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            unselectTools();
             spModal.Visibility = Visibility.Visible;
             Canvas.SetZIndex(spModal, 2);
             Canvas.SetZIndex(ContentPanel, 0);
@@ -174,7 +184,52 @@ namespace eGreetings
 
         private void btnText_Click(object sender, RoutedEventArgs e)
         {
+            unselectTools();
             insertTextModal.Visibility = Visibility.Visible;
+        }
+
+        private void btnHideTools_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {            
+            spToolsButtons.Visibility = Visibility.Collapsed;
+            btnShowTools.Visibility = Visibility.Visible;
+        }
+
+        private void btnEraseObject_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (eraserSelected)
+            {
+                eraserSelected = false;
+                btnEraseObject.Background = new SolidColorBrush(Colors.Transparent);
+            }
+            else
+            {
+                unselectTools();
+                eraserSelected = true;
+                btnEraseObject.Background = new SolidColorBrush(Colors.Orange);
+            }
+        }
+
+        private void btnDraw_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (penSelected)
+            {
+                penSelected=false;
+                btnDraw.Background = new SolidColorBrush(Colors.DarkGray);
+                cpDrawColour.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                unselectTools();
+                penSelected = true;
+                btnDraw.Background = new SolidColorBrush(Colors.Orange);
+                cpDrawColour.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void btnShowTools_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            spToolsButtons.Visibility = Visibility.Visible;
+            btnShowTools.Visibility = Visibility.Collapsed;
         }
 
         private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -190,6 +245,7 @@ namespace eGreetings
                 i.MaxHeight = 120;
                 i.MaxWidth = 120;
                 i.Source = ((Image)sender).Source;
+                i.MouseLeftButtonDown += deleteObject_MouseLeftButtonDown;
                 //MessageBox.Show(i.Name);
                 ContentPanel.Visibility = Visibility.Visible;
                 lbxObjects.Visibility = Visibility.Collapsed;
@@ -201,6 +257,20 @@ namespace eGreetings
                 Canvas.SetTop(i, Application.Current.Host.Content.ActualHeight / 4);
             }
             objectSelectionTickCounter = 0;
+        }
+
+        void deleteObject_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (eraserSelected)
+            {
+                UIElement selectedItem = ((UIElement)sender);
+                if (selectedItem is Line)
+                {
+                    canvasImage.Children.Remove(selectedItem);
+                }
+                else
+                    canvasImage.Children.Remove(selectedItem);
+            }
         }
 
         void OnManipulationDelta(object sender, ManipulationDeltaEventArgs args)
@@ -284,7 +354,8 @@ namespace eGreetings
                     break;
             }
 
-            TextBlock txtNew = new TextBlock() { Text = txtMessage.Text, FontSize = fontSize, Foreground = new SolidColorBrush(csFontColor.Color), FontFamily = fontFamily }; //FontFamily = new FontFamily("/Assets/Fonts/BuxtonSketch.tff#Buxton Sketch") }; //+ (((ListPicker)lpFontFamily).SelectedItem as ListPickerItem).Content.ToString() };
+            TextBlock txtNew = new TextBlock() { Text = txtMessage.Text, FontSize = fontSize, Foreground = new SolidColorBrush(csFontColor.Color), FontFamily = fontFamily };
+            txtNew.MouseLeftButtonDown += deleteObject_MouseLeftButtonDown;
             insertTextModal.Visibility = Visibility.Collapsed;
             txtNew.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(OnManipulationDelta); 
             canvasImage.Children.Add(txtNew);
@@ -300,6 +371,54 @@ namespace eGreetings
                 FontFamily font = new FontFamily(fontName);
                 //txtMessage.FontFamily = font;
             }
+        }
+
+        private void canvasImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //Code for drawing found here: http://www.geekchamp.com/tips/drawing-in-wp7-2-drawing-shapes-with-finger
+            currentPoint = e.GetPosition(canvasImage);
+            oldPoint = currentPoint;
+        }
+
+        private void canvasImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (penSelected)
+            {
+                currentPoint = e.GetPosition(this.canvasImage);
+                
+                Line line = new Line() { X1 = currentPoint.X, Y1 = currentPoint.Y, X2 = oldPoint.X, Y2 = oldPoint.Y };
+                line.Stroke = new SolidColorBrush(drawingStrokeColour);
+                line.StrokeThickness = drawingStrokeThickness;
+                line.MouseEnter += line_MouseEnter; //deleteObject_MouseLeftButtonDown;
+                this.canvasImage.Children.Add(line);
+                oldPoint = currentPoint;
+            }
+        }
+
+        void line_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (eraserSelected)
+            {
+                UIElement selectedItem = ((UIElement)sender);
+                if (selectedItem is Line)
+                {
+                    canvasImage.Children.Remove(selectedItem);
+                }
+            }
+        }
+                
+        private void unselectTools()
+        {
+            eraserSelected = false;
+            penSelected = false;
+            btnDraw.Background = new SolidColorBrush(Colors.DarkGray);
+            btnEraseObject.Background = new SolidColorBrush(Colors.DarkGray);
+            cpDrawColour.Visibility = Visibility.Collapsed;
+        }
+
+        private void cpDrawColour_ColorChanged(object sender, Color color)
+        {
+            drawingStrokeColour = ((Coding4Fun.Toolkit.Controls.ColorSlider)sender).Color;
         }
     }
 }

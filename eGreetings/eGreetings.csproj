@@ -189,6 +189,9 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\draw.png" />
+    <Content Include="Assets\Images\eraser.png" />
+    <Content Include="Assets\Images\leftArrow.png" />
     <Content Include="Assets\Images\ObjectsGrid\ball.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon2.png" />
@@ -214,7 +217,7 @@
     <Content Include="Assets\Images\ObjectsGrid\smiley4.png" />
     <Content Include="Assets\Images\ObjectsGrid\snowman1.png" />
     <Content Include="Assets\Images\ObjectsGrid\wreath1.png" />
-    <Content Include="Assets\Images\Postcard1.jpg" />
+    <Content Include="Assets\Images\rightArrow.png" />
     <Content Include="Assets\Images\save.png" />
     <Content Include="Assets\Images\SeasonGreetings2.jpg" />
     <Content Include="Assets\Images\SeasonGreetings3.jpg" />

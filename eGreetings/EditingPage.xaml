@@ -19,9 +19,10 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
+        
         
         <!--TitlePanel contains the name of the application and page title-->
         <!--//<StackPanel Orientation="Horizontal" Grid.Row="0">-->
@@ -32,7 +33,7 @@
         <!--ContentPanel - place additional content here-->
         
 
-        <ListBox x:Name="lbxObjects" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
+        <ListBox x:Name="lbxObjects" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -76,17 +77,59 @@
                 <Image x:Name="wreath1" Source="Assets\\Images\\ObjectsGrid\\wreath1.png" Grid.Row="4" Grid.Column="4" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
             </Grid>
         </ListBox>
-        <Grid x:Name="ContentPanel" Margin="12,0,12,0">            
-            <Canvas x:Name="canvasImage">
-                <Image x:Name="imgBackgroundImage"></Image>
-            </Canvas>
-            <StackPanel x:Name="spToolsButtons"  Margin="0,10">
-                <!--<Button x:Name="btnObjects" Content="OBJ" Click="btnObjects_Click"></Button>-->
-                <Image x:Name="btnObjects" Margin="0,20" Source="Assets\\Images\\Smiley.png" MouseLeftButtonDown="btnObjects_Click" Height="60" Width="60"></Image>
-                <Image x:Name="btnText" Source="Assets\\Images\\Text.png" Margin="0,20" HorizontalAlignment="Center" MouseLeftButtonDown="btnText_Click" ></Image>
-                <Image x:Name="btnSave" Source="Assets\\Images\\save.png" Margin="0,20" MouseLeftButtonDown="btnSave_Click"></Image>
-                <Image x:Name="btnSend" Source="Assets\\Images\\send.png" Margin="0,20" MouseLeftButtonDown="btnSend_Click"></Image>
-            </StackPanel>            
+        <Grid x:Name="ContentPanel" Margin="2,0,2,0">
+            <Canvas x:Name="canvasImage" Canvas.ZIndex="0" MouseLeftButtonDown="canvasImage_MouseLeftButtonDown" MouseMove="canvasImage_MouseMove">                
+                <Image x:Name="imgBackgroundImage" ></Image>
+            </Canvas>            
+            
+            <StackPanel x:Name="btnShowTools" Visibility="Collapsed" Canvas.ZIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="75" Background="DarkGray" MouseLeftButtonDown="btnShowTools_MouseLeftButtonDown">
+                <Image Source="Assets\\Images\\rightArrow.png" Height="50" Width="50"></Image>
+                <TextBlock Text="Show" HorizontalAlignment="Center" Margin="0,0,0,-10" Foreground="White"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="spToolsButtons" Visibility="Visible" Canvas.ZIndex="2" HorizontalAlignment="Left" >
+                <StackPanel Background="DarkGray" Opacity="0.8" Orientation="Horizontal" Width="230" Height="80">
+                    <StackPanel Name="btnHideTools" MouseLeftButtonDown="btnHideTools_MouseLeftButtonDown">
+                        <Image x:Name="btnHide" Source="Assets\\Images\\leftArrow.png" Height="50" Width="50"></Image>
+                        <TextBlock Text="Hide" HorizontalAlignment="Center" Margin="0,0,0,-10" Foreground="White"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="|" FontSize="60" VerticalAlignment="Top" Margin="10,0,5,0" Foreground="LightGray"></TextBlock>
+                    <StackPanel x:Name="btnObjects" MouseLeftButtonDown="btnObjects_Click">
+                        <Image  Source="Assets\\Images\\Smiley.png" Height="50"  Width="50"></Image>
+                        <TextBlock Text="Objects" HorizontalAlignment="Center" Margin="0,0,0,-10" Foreground="White"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="|" FontSize="60" VerticalAlignment="Top" Margin="5,0,5,0" Foreground="LightGray"></TextBlock>
+                    <StackPanel x:Name="btnDraw" MouseLeftButtonDown="btnDraw_MouseLeftButtonDown">
+                        <Image Source="Assets\\Images\\draw.png" Height="50" Width="50"></Image>
+                        <TextBlock Text="Draw" HorizontalAlignment="Center" Margin="0,0,0,-10" Foreground="White"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Width="70" Background="DarkGray" Opacity="0.8">                    
+                    <!--<Button x:Name="btnObjects" Content="OBJ" Click="btnObjects_Click"></Button>-->                                
+                <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                    <StackPanel Name="btnEraseObject" MouseLeftButtonDown="btnEraseObject_MouseLeftButtonDown">
+                        <Image Source="Assets\\Images\\eraser.png" Height="50"></Image>
+                        <TextBlock Text="Erase" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                    <StackPanel x:Name="btnText" MouseLeftButtonDown="btnText_Click">
+                    <Image Source="Assets\\Images\\Text.png" Height="50" HorizontalAlignment="Center" ></Image>
+                    <TextBlock Text="Text" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                </StackPanel>
+                <TextBlock Text="--------" FontSize="20" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+
+                    <StackPanel Name="btnSave" MouseLeftButtonDown="btnSave_Click">
+                    <Image Source="Assets\\Images\\save.png" Height="50" MouseLeftButtonDown="btnSave_Click"></Image>
+                    <TextBlock Text="Save" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                </StackPanel>
+                <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                    <StackPanel Name="btnSend" MouseLeftButtonDown="btnSend_Click">
+                    <Image Source="Assets\\Images\\send.png" Height="50" ></Image>
+                    <TextBlock Text="Send" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+                </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            
         </Grid>
 
         <Border x:Name="spModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="600" MaxHeight="350" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
@@ -103,7 +146,7 @@
             </StackPanel>
         </Border>
 
-        <Border x:Name="insertTextModal" Visibility="Visible" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="650" MaxHeight="400" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
+        <Border x:Name="insertTextModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="650" MaxHeight="400" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
             <StackPanel>
                 <TextBlock Text="Enter Text" FontSize="38" Margin="0,10" Foreground="White" FontWeight="ExtraBold" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Name="txtMessage" FontSize="30" TextWrapping="Wrap" Height="120" AcceptsReturn="True"></TextBox>
@@ -137,6 +180,9 @@
         <Border x:Name="txtImagedSaved" Visibility="Collapsed" CornerRadius="10,10,10,10" Background="Pink" Grid.Column="1" Margin="20" HorizontalAlignment="Right" Width="250" Height="70" VerticalAlignment="Top">
             <TextBlock Text="Image Saved" FontSize="34" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="DarkRed"></TextBlock>
         </Border>
+
+        <c4fToolkit:ColorSlider Name="cpDrawColour" Visibility="Collapsed" ColorChanged="cpDrawColour_ColorChanged" Grid.Column="1" HorizontalAlignment="Right" Width="30" VerticalAlignment="Top" Height="230" Margin="20, 20"></c4fToolkit:ColorSlider>    
+        
     </Grid>
 
 </phone:PhoneApplicationPage> 
