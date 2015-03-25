@@ -10,6 +10,7 @@ using eGreetings.Resources;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace eGreetings
 {
@@ -23,6 +24,8 @@ namespace eGreetings
         public Image savedImage = new Image();
         public List<Image> objectImages = new List<Image>();
         public byte[] imageToSend;
+        public List<Image> catImages = new List<Image>();
+        public ImageBrush appBackgroundImage = new ImageBrush();
 
         public static new App Current
         {

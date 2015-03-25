@@ -26,6 +26,7 @@ namespace eGreetings
         public SendPage()
         {
             InitializeComponent();
+            LayoutRoot.Background = App.Current.appBackgroundImage;
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)

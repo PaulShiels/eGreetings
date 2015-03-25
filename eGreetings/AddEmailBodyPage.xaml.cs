@@ -15,6 +15,7 @@ namespace eGreetings
         public AddEmailBodyPage()
         {
             InitializeComponent();
+            LayoutRoot.Background = App.Current.appBackgroundImage;
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)

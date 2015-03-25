@@ -20,6 +20,7 @@ namespace eGreetings
         public CreateAccount()
         {
             InitializeComponent();
+            LayoutRoot.Background = App.Current.appBackgroundImage;
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

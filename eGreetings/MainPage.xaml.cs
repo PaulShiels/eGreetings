@@ -26,31 +26,48 @@ namespace eGreetings
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
-            App.Current.selectedImage = new Image() { Source = new BitmapImage(new Uri("http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png", UriKind.Absolute)) };
-        }
-
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {            
-            ImageBrush background = new ImageBrush(){ImageSource = new BitmapImage(new Uri(@"\Assets\Images\MainBackground.jpg", UriKind.Relative))};
-            LayoutRoot.Background = background;
+            App.Current.appBackgroundImage = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"\Assets\Images\MainBackground.jpg", UriKind.Relative)) };
+            LayoutRoot.Background = App.Current.appBackgroundImage;
             FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
             txtNewGreeting.FontFamily = fontFamily;
             txtTemplates.FontFamily = fontFamily;
             txtRecentlySent.FontFamily = fontFamily;
             txtSavedGreetings.FontFamily = fontFamily;
-            RunAsync();
+
+            // Sample code to localize the ApplicationBar
+            //BuildLocalizedApplicationBar();
+            //App.Current.selectedImage = new Image() { Source = new BitmapImage(new Uri("http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png", UriKind.Absolute)) };
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {   
+            //RunAsync();
         }
 
         private void btnTemplates_Click(object sender, RoutedEventArgs e)
         {
+            SelectCategory.ButtonClicked = "templates";
             //NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
-            NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/SelectCategory.xaml", UriKind.Relative));
             //NavigationService.RemoveBackEntry();
-            App.Current.TemplateImages = convertImageStringsToImageList(templateImagesStrings);
-            App.Current.objectImages = convertImageStringsToImageList(objectImageStrings);
+            //App.Current.TemplateImages = convertImageStringsToImageList(templateImagesStrings);
+            //App.Current.objectImages = convertImageStringsToImageList(objectImageStrings);
+        }
+
+        private void btnNewGreeting_Click(object sender, RoutedEventArgs e)
+        {
+            SelectCategory.ButtonClicked = "newGreeting";
+            NavigationService.Navigate(new Uri("/SelectCategory.xaml", UriKind.Relative));
+        }
+
+        private void btnSavedGreetings_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
+        }
+
+        private void btnRecentlySent_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private List<Image> convertImageStringsToImageList(List<string> images)
@@ -79,21 +96,6 @@ namespace eGreetings
             }
         }
 
-        private void btnNewGreeting_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Page1.xaml", UriKind.Relative));
-        }
-
-        private void btnSavedGreetings_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
-        }
-
-        private void btnRecentlySent_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
@@ -118,7 +120,6 @@ namespace eGreetings
             NavigationService.RemoveBackEntry();
         }
         
-
         static async Task RunAsync()
         {
             using (var client = new HttpClient())
