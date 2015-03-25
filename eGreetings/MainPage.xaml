@@ -10,16 +10,22 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Landscape"
+    SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
     Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
@@ -44,14 +50,26 @@
         
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <Image Source="\Assets\Images\New_Icon.png" MaxHeight="130" MouseLeftButtonDown="btnNewGreeting_Click"></Image>
+        <TextBlock Name="txtNewGreeting" Text="New Greeting" VerticalAlignment="Center" Foreground="Wheat" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnNewGreeting_Click"></TextBlock>
+
+        <Image Source="\Assets\Images\Template_Icon.png" Grid.Row="1" MaxHeight="130" MouseLeftButtonDown="btnTemplates_Click"></Image>
+        <TextBlock Name="txtTemplates" VerticalAlignment="Center" Foreground="Wheat" Text="Templates" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="58" TextAlignment="Center" MouseLeftButtonDown="btnTemplates_Click"></TextBlock>
+
+        <Image Source="\Assets\Images\Save_Icon.png" MaxHeight="130" Grid.Row="2" MouseLeftButtonDown="btnSavedGreetings_Click"></Image>
+        <TextBlock Name="txtSavedGreetings" VerticalAlignment="Center" Text="Saved Greetings" Foreground="Wheat" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Grid.Row="2" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnSavedGreetings_Click"></TextBlock>
+
+        <Image Source="\Assets\Images\RecentlySent_Icon.png" MaxHeight="130" Grid.Row="3" MouseLeftButtonDown="btnRecentlySent_Click"></Image>
+        <TextBlock Name="txtRecentlySent" Text="Recently Sent" Grid.Column="1" TextWrapping="Wrap" Foreground="Wheat" VerticalAlignment="Center" Grid.Row="3" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnRecentlySent_Click"></TextBlock>
+        
+        <!--<Grid x:Name="ContentPanel" Margin="12,0,12,0">           
+            <StackPanel x:Name="TitlePanel" Visibility="Collapsed">
                 <Button x:Name="btnNewGreeting" Margin="20,10" Content="New Greeting" Click="btnNewGreeting_Click"></Button>
                 <Button x:Name="btnSavedGreetings" Margin="20,10" Content="Saved Greetings" Click="btnSavedGreetings_Click"></Button>
                 <Button x:Name="btnTemplates" Margin="20,10" Content="Templates" Click="btnTemplates_Click"></Button>
                 <Button x:Name="btnRecentlySent" Margin="20,10" Content="Recently Sent" Click="btnRecentlySent_Click"></Button>
             </StackPanel>
-        </Grid>
+        </Grid>-->
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to

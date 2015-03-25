@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Windows.Media;
 
 namespace eGreetings
 {
@@ -27,12 +28,19 @@ namespace eGreetings
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar
-            BuildLocalizedApplicationBar();
+            //BuildLocalizedApplicationBar();
             App.Current.selectedImage = new Image() { Source = new BitmapImage(new Uri("http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png", UriKind.Absolute)) };
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
+        {            
+            ImageBrush background = new ImageBrush(){ImageSource = new BitmapImage(new Uri(@"\Assets\Images\MainBackground.jpg", UriKind.Relative))};
+            LayoutRoot.Background = background;
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+            txtNewGreeting.FontFamily = fontFamily;
+            txtTemplates.FontFamily = fontFamily;
+            txtRecentlySent.FontFamily = fontFamily;
+            txtSavedGreetings.FontFamily = fontFamily;
             RunAsync();
         }
 
@@ -42,6 +50,7 @@ namespace eGreetings
             NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
             //NavigationService.RemoveBackEntry();
             App.Current.TemplateImages = convertImageStringsToImageList(templateImagesStrings);
+            App.Current.objectImages = convertImageStringsToImageList(objectImageStrings);
         }
 
         private List<Image> convertImageStringsToImageList(List<string> images)
@@ -86,20 +95,20 @@ namespace eGreetings
         }
 
         // Sample code for building a localized ApplicationBar
-        private void BuildLocalizedApplicationBar()
-        {
-            // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar();
+        //private void BuildLocalizedApplicationBar()
+        //{
+        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
+        //    ApplicationBar = new ApplicationBar();
 
-            // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarButtonText;
-            ApplicationBar.Buttons.Add(appBarButton);
+        //    // Create a new button and set the text value to the localized string from AppResources.
+        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
+        //    appBarButton.Text = AppResources.AppBarButtonText;
+        //    ApplicationBar.Buttons.Add(appBarButton);
 
-            // Create a new menu item with the localized string from AppResources.
-            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-            ApplicationBar.MenuItems.Add(appBarMenuItem);
-        }
+        //    // Create a new menu item with the localized string from AppResources.
+        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
+        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
+        //}
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {

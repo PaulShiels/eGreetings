@@ -192,6 +192,8 @@
     <Content Include="Assets\Images\draw.png" />
     <Content Include="Assets\Images\eraser.png" />
     <Content Include="Assets\Images\leftArrow.png" />
+    <Content Include="Assets\Images\MainBackground.jpg" />
+    <Content Include="Assets\Images\New_Icon.png" />
     <Content Include="Assets\Images\ObjectsGrid\ball.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon2.png" />
@@ -217,13 +219,16 @@
     <Content Include="Assets\Images\ObjectsGrid\smiley4.png" />
     <Content Include="Assets\Images\ObjectsGrid\snowman1.png" />
     <Content Include="Assets\Images\ObjectsGrid\wreath1.png" />
+    <Content Include="Assets\Images\RecentlySent_Icon.png" />
     <Content Include="Assets\Images\rightArrow.png" />
     <Content Include="Assets\Images\save.png" />
+    <Content Include="Assets\Images\Save_Icon.png" />
     <Content Include="Assets\Images\SeasonGreetings2.jpg" />
     <Content Include="Assets\Images\SeasonGreetings3.jpg" />
     <Content Include="Assets\Images\seasons_greetings.jpg" />
     <Content Include="Assets\Images\send.png" />
     <Content Include="Assets\Images\Smiley.png" />
+    <Content Include="Assets\Images\Template_Icon.png" />
     <Content Include="Assets\Images\Text.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -44,6 +44,59 @@ namespace eGreetings
             //App.Current.editingPage = this;
         }
 
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {////https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ
+            //Image i = new Image() { Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute)) };
+            imgBackgroundImage.Source = App.Current.selectedImage.Source;// new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)); //Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute));// App.Current.selectedImage.Source;
+            populateObjectsListbox();
+            //imgBackgroundImage.MaxWidth = Application.Current.Host.Content.ActualHeight;
+            //imgBackgroundImage.MaxHeight = Application.Current.Host.Content.ActualWidth;
+
+            //List<Image> listBoxImages = new List<Image>();
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings1.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)) });
+            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings3.jpg", UriKind.Absolute)) });
+        }
+
+        private void populateObjectsListbox()
+        {
+            //Create the grid to hold the objects
+            Grid objectsGrid = new Grid();
+
+            //Add 5 columns
+            for (int i = 0; i < 5; i++)
+            {
+                objectsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            //Create appropriate number of rows
+            for (int i = 0; i < Math.Round(Convert.ToDouble(App.Current.objectImages.Count/5),MidpointRounding.AwayFromZero); i++)
+            {
+                objectsGrid.RowDefinitions.Add(new RowDefinition());
+            }
+
+            int colId = 0, rowId = 0;
+            foreach (var image in App.Current.objectImages)
+            {
+                image.Margin = new Thickness(5);
+                image.MouseLeftButtonUp += Image_MouseLeftButtonUp;
+                objectsGrid.Children.Add(image);
+                Grid.SetColumn(image, colId);
+                Grid.SetRow(image, rowId);
+
+                if (colId < 4)
+                    colId++;
+                else
+                {
+                    colId = 0;
+                    rowId++;
+                }
+            }
+
+            lbxObjects.Items.Add(objectsGrid);
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             //Timer is used to stop objects being selected when dragging them in the listbox 
@@ -77,19 +130,7 @@ namespace eGreetings
             tickCounter++;
         }
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {////https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ
-            //Image i = new Image() { Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute)) };
-            imgBackgroundImage.Source = App.Current.selectedImage.Source;// new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)); //Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute));// App.Current.selectedImage.Source;
-            //imgBackgroundImage.MaxWidth = Application.Current.Host.Content.ActualHeight;
-            //imgBackgroundImage.MaxHeight = Application.Current.Host.Content.ActualWidth;
-
-            //List<Image> listBoxImages = new List<Image>();
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings1.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings3.jpg", UriKind.Absolute)) });
-        }
+        
 
         private void btnObjects_Click(object sender, RoutedEventArgs e)
         {

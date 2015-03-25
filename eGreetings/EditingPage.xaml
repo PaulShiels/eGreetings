@@ -34,7 +34,7 @@
         
 
         <ListBox x:Name="lbxObjects" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="12,0,12,0" MouseLeftButtonDown="lbxObjects_MouseLeftButtonDown">
-            <Grid>
+            <!--<Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="2*"/>
@@ -75,7 +75,7 @@
                 <Image x:Name="smiley4" Source="Assets\\Images\\ObjectsGrid\\smiley4.png" Grid.Row="4" Grid.Column="2" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
                 <Image x:Name="snowman1" Source="Assets\\Images\\ObjectsGrid\\snowman1.png" Grid.Row="4" Grid.Column="3" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
                 <Image x:Name="wreath1" Source="Assets\\Images\\ObjectsGrid\\wreath1.png" Grid.Row="4" Grid.Column="4" Margin="5" MouseLeftButtonUp="Image_MouseLeftButtonUp" ></Image>
-            </Grid>
+            </Grid>-->
         </ListBox>
         <Grid x:Name="ContentPanel" Margin="2,0,2,0">
             <Canvas x:Name="canvasImage" Canvas.ZIndex="0" MouseLeftButtonDown="canvasImage_MouseLeftButtonDown" MouseMove="canvasImage_MouseMove">                
