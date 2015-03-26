@@ -102,6 +102,9 @@
     <Compile Include="EditingPage.xaml.cs">
       <DependentUpon>EditingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadingTools.xaml.cs">
+      <DependentUpon>LoadingTools.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -140,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadingTools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

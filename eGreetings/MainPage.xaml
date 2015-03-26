@@ -10,7 +10,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Landscape"
     shell:SystemTray.IsVisible="True"
     Loaded="PhoneApplicationPage_Loaded">
 
@@ -50,17 +50,17 @@
         
 
         <!--ContentPanel - place additional content here-->
-        <Image Source="\Assets\Images\New_Icon.png" MaxHeight="130" MouseLeftButtonDown="btnNewGreeting_Click"></Image>
-        <TextBlock Name="txtNewGreeting" Text="New Greeting" VerticalAlignment="Center" Foreground="Wheat" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnNewGreeting_Click"></TextBlock>
+        <Image Source="\Assets\Images\New_Icon.png" MaxHeight="130" MouseLeftButtonUp="btnNewGreeting_Click"></Image>
+        <TextBlock Name="txtNewGreeting" Text="New Greeting" VerticalAlignment="Center" Foreground="Wheat" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="60" TextAlignment="Center" MouseLeftButtonUp="btnNewGreeting_Click"></TextBlock>
 
-        <Image Source="\Assets\Images\Template_Icon.png" Grid.Row="1" MaxHeight="130" MouseLeftButtonDown="btnTemplates_Click"></Image>
-        <TextBlock Name="txtTemplates" VerticalAlignment="Center" Foreground="Wheat" Text="Templates" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="58" TextAlignment="Center" MouseLeftButtonDown="btnTemplates_Click"></TextBlock>
+        <Image Source="\Assets\Images\Template_Icon.png" Grid.Row="1" MaxHeight="130" MouseLeftButtonUp="btnTemplates_Click"></Image>
+        <TextBlock Name="txtTemplates" VerticalAlignment="Center" Foreground="Wheat" Text="Templates" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="58" TextAlignment="Center" MouseLeftButtonUp="btnTemplates_Click"></TextBlock>
 
-        <Image Source="\Assets\Images\Save_Icon.png" MaxHeight="130" Grid.Row="2" MouseLeftButtonDown="btnSavedGreetings_Click"></Image>
-        <TextBlock Name="txtSavedGreetings" VerticalAlignment="Center" Text="Saved Greetings" Foreground="Wheat" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Grid.Row="2" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnSavedGreetings_Click"></TextBlock>
+        <Image Source="\Assets\Images\Save_Icon.png" MaxHeight="130" Grid.Row="2" MouseLeftButtonUp="btnSavedGreetings_Click"></Image>
+        <TextBlock Name="txtSavedGreetings" VerticalAlignment="Center" Text="Saved Greetings" Foreground="Wheat" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Grid.Row="2" FontSize="60" TextAlignment="Center" MouseLeftButtonUp="btnSavedGreetings_Click"></TextBlock>
 
-        <Image Source="\Assets\Images\RecentlySent_Icon.png" MaxHeight="130" Grid.Row="3" MouseLeftButtonDown="btnRecentlySent_Click"></Image>
-        <TextBlock Name="txtRecentlySent" Text="Recently Sent" Grid.Column="1" TextWrapping="Wrap" Foreground="Wheat" VerticalAlignment="Center" Grid.Row="3" FontSize="60" TextAlignment="Center" MouseLeftButtonDown="btnRecentlySent_Click"></TextBlock>
+        <Image Source="\Assets\Images\RecentlySent_Icon.png" MaxHeight="130" Grid.Row="3" MouseLeftButtonUp="btnRecentlySent_Click"></Image>
+        <TextBlock Name="txtRecentlySent" Text="Recently Sent" Grid.Column="1" TextWrapping="Wrap" Foreground="Wheat" VerticalAlignment="Center" Grid.Row="3" FontSize="60" TextAlignment="Center" MouseLeftButtonUp="btnRecentlySent_Click"></TextBlock>
         
         <!--<Grid x:Name="ContentPanel" Margin="12,0,12,0">           
             <StackPanel x:Name="TitlePanel" Visibility="Collapsed">

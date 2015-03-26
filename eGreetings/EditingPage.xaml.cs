@@ -18,12 +18,14 @@ using Microsoft.Phone.Tasks;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Shapes;
+using Windows.Phone.UI.Input;
 
 namespace eGreetings
 {
     public partial class EditingPage : PhoneApplicationPage
     {
         private DispatcherTimer timer = new DispatcherTimer();
+        public static Image imageToEdit = new Image();
         private int tickCounter = 0;
         private int objectSelectionTickCounter;
         private bool DisplayImageSavedText;
@@ -33,6 +35,9 @@ namespace eGreetings
         private Color drawingStrokeColour = Colors.White;
         private bool eraserSelected;
         private bool penSelected;
+
+        //Create the grid to hold the objects
+        Grid objectsGrid = new Grid();
 
         public EditingPage()
         {
@@ -45,25 +50,16 @@ namespace eGreetings
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {////https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ
-            //Image i = new Image() { Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute)) };
-            imgBackgroundImage.Source = App.Current.selectedImage.Source;// new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)); //Source = new BitmapImage(new Uri("https://onedrive.live.com/embed?cid=6A2C8AD9912860A4&resid=6A2C8AD9912860A4%2146903&authkey=AI-aJjpeVFo5WoQ", UriKind.Absolute));// App.Current.selectedImage.Source;
-            populateObjectsListbox();
-            //imgBackgroundImage.MaxWidth = Application.Current.Host.Content.ActualHeight;
-            //imgBackgroundImage.MaxHeight = Application.Current.Host.Content.ActualWidth;
-
-            //List<Image> listBoxImages = new List<Image>();
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings1.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings2.jpg", UriKind.Absolute)) });
-            //listBoxImages.Add(new Image() { Source = new BitmapImage(new Uri("http://egreetings.me/eGreetings.me/eGreetingsImages/Backgrounds/SeasonGreetings3.jpg", UriKind.Absolute)) });
+        {
+            if (objectsGrid.Children.Count == 0)
+            {
+                imgBackgroundImage.Source = imageToEdit.Source;
+                populateObjectsListbox();
+            }
         }
 
         private void populateObjectsListbox()
         {
-            //Create the grid to hold the objects
-            Grid objectsGrid = new Grid();
-
             //Add 5 columns
             for (int i = 0; i < 5; i++)
             {
@@ -71,7 +67,16 @@ namespace eGreetings
             }
 
             //Create appropriate number of rows
-            for (int i = 0; i < Math.Round(Convert.ToDouble(App.Current.objectImages.Count/5),MidpointRounding.AwayFromZero); i++)
+            double rowsNeeded = App.Current.objectImages.Count / 5;
+            if (App.Current.objectImages.Count % 5 > 0)
+            {
+                if (App.Current.objectImages.Count % 5 < 5)
+                    rowsNeeded = Math.Round(rowsNeeded, MidpointRounding.ToEven) + 1;
+                else
+                    rowsNeeded = Math.Round(rowsNeeded, MidpointRounding.AwayFromZero);
+            }
+            //double rowsNeeded = Math.Round(Convert.ToDouble(App.Current.objectImages.Count / 5), MidpointRounding.AwayFromZero);
+            for (int i = 0; i < rowsNeeded; i++)
             {
                 objectsGrid.RowDefinitions.Add(new RowDefinition());
             }
@@ -79,6 +84,8 @@ namespace eGreetings
             int colId = 0, rowId = 0;
             foreach (var image in App.Current.objectImages)
             {
+                if (image.Parent != null)
+                    ((Grid)image.Parent).Children.Remove(image);
                 image.Margin = new Thickness(5);
                 image.MouseLeftButtonUp += Image_MouseLeftButtonUp;
                 objectsGrid.Children.Add(image);
@@ -94,7 +101,7 @@ namespace eGreetings
                 }
             }
 
-            lbxObjects.Items.Add(objectsGrid);
+            lbxObjects.Items.Add(objectsGrid);            
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -128,8 +135,7 @@ namespace eGreetings
             //if (App.Current.objectToAdd != null)
             //    oldImageObject = App.Current.objectToAdd;
             tickCounter++;
-        }
-
+        }       
         
 
         private void btnObjects_Click(object sender, RoutedEventArgs e)
@@ -332,18 +338,6 @@ namespace eGreetings
             timer.Start();
         }
 
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            //Do your work here            
-            
-            base.OnBackKeyPress(e);
-            NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
-            NavigationService.RemoveBackEntry();
-            //ContentPanel.Children.RemoveAt(0);
-        }
-        
-        public object NewImgMouseLeftButtonDown { get; set; }
-
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
             saveImage();
@@ -461,5 +455,38 @@ namespace eGreetings
         {
             drawingStrokeColour = ((Coding4Fun.Toolkit.Controls.ColorSlider)sender).Color;
         }
+
+        private void btnNoDontLeavePage_Click(object sender, RoutedEventArgs e)
+        {
+            spBackModal.Visibility = Visibility.Collapsed;
+            ToggleToolsButtons(true);
+        }
+
+        private void btnYesGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            spBackModal.Visibility = Visibility.Collapsed;
+            NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
+        }
+
+        private void ToggleToolsButtons(bool enabled)
+        {
+            if (enabled)
+                spToolsButtons.IsHitTestVisible = true;
+            else
+                spToolsButtons.IsHitTestVisible = false;
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnBackKeyPress(e);
+            spBackModal.Visibility = Visibility.Visible;
+            ToggleToolsButtons(false);
+            //NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
+            //ContentPanel.Children.RemoveAt(0);
+        }
+
+
+        
     }
 }

@@ -41,8 +41,9 @@ namespace eGreetings
         private void lbxTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((ListBox)sender).SelectedItem != null)
-                App.Current.selectedImage = (Image)((ListBox)sender).SelectedItem;
-            NavigationService.Navigate(new Uri("/EditingPage.xaml", UriKind.Relative));
+                EditingPage.imageToEdit = (Image)((ListBox)sender).SelectedItem;
+            lbxTemplates.SelectedIndex = -1;
+            NavigationService.Navigate(new Uri("/LoadingTools.xaml", UriKind.Relative));
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)

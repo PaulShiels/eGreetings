@@ -11,19 +11,23 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.IO;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace eGreetings
 {
 
     public partial class App : Application
     {
-        public List<Image> TemplateImages = new List<Image>();
-        public Image selectedImage;
+        //public List<Image> TemplateImages = new List<Image>();
         public string emailBody;
         public string emailImageName;
         public Image savedImage = new Image();
         public List<Image> objectImages = new List<Image>();
         public byte[] imageToSend;
+        public List<string> retrivedImageStringsTemp = new List<string>();
         public List<Image> catImages = new List<Image>();
         public ImageBrush appBackgroundImage = new ImageBrush();
 
@@ -238,6 +242,53 @@ namespace eGreetings
                 }
 
                 throw;
+            }
+        }
+
+        public async Task GetImagesAsync(string buttonClicked, string category)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://egreetings.me/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync("api/Values?greetingType=" + buttonClicked + "&&category=" + category);
+                if (response.IsSuccessStatusCode)
+                {
+                     retrivedImageStringsTemp = await response.Content.ReadAsAsync<List<string>>();
+
+                    //List<List<string>> images = await response.Content.ReadAsAsync<List<List<string>>>();
+                    //MessageBox.Show("Images Loaded!");
+                    //templateImagesStrings = images[0];
+                    //objectImageStrings = images[1];
+                }
+            }
+        }
+        
+        public List<Image> convertImageStringsToImageList(List<string> images)
+        {
+            List<Image> lstImages = new List<Image>();
+            foreach (var img in images)
+            {
+                Image i = new Image();
+                i.Source = base64image(img);
+                lstImages.Add(i);
+            }
+            return lstImages;
+        }
+
+        public static BitmapImage base64image(string base64string)
+        {
+            //Found this method that converts the base64 string back to a Bitmap Image at: http://stackoverflow.com/questions/14539005/convert-base64-string-to-image-in-c-sharp-on-windows-phone
+            byte[] fileBytes = Convert.FromBase64String(base64string);
+
+            using (MemoryStream ms = new MemoryStream(fileBytes, 0, fileBytes.Length))
+            {
+                ms.Write(fileBytes, 0, fileBytes.Length);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(ms);
+                return bitmapImage;
             }
         }
     }

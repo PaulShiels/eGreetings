@@ -153,3 +153,4 @@ C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debu
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\konstytucyja_091.ttf
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Assets\Fonts\Rostock Kaligraph.ttf
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\SelectCategory.g.cs
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\LoadingTools.g.cs

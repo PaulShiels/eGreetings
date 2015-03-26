@@ -80,13 +80,13 @@
         <Grid x:Name="ContentPanel" Margin="2,0,2,0">
             <Canvas x:Name="canvasImage" Canvas.ZIndex="0" MouseLeftButtonDown="canvasImage_MouseLeftButtonDown" MouseMove="canvasImage_MouseMove">                
                 <Image x:Name="imgBackgroundImage" ></Image>
-            </Canvas>            
-            
+            </Canvas>
+
             <StackPanel x:Name="btnShowTools" Visibility="Collapsed" Canvas.ZIndex="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="75" Background="DarkGray" MouseLeftButtonDown="btnShowTools_MouseLeftButtonDown">
                 <Image Source="Assets\\Images\\rightArrow.png" Height="50" Width="50"></Image>
                 <TextBlock Text="Show" HorizontalAlignment="Center" Margin="0,0,0,-10" Foreground="White"></TextBlock>
             </StackPanel>
-            <StackPanel x:Name="spToolsButtons" Visibility="Visible" Canvas.ZIndex="2" HorizontalAlignment="Left" >
+                <StackPanel x:Name="spToolsButtons" Visibility="Visible" Canvas.ZIndex="2" HorizontalAlignment="Left" >
                 <StackPanel Background="DarkGray" Opacity="0.8" Orientation="Horizontal" Width="230" Height="80">
                     <StackPanel Name="btnHideTools" MouseLeftButtonDown="btnHideTools_MouseLeftButtonDown">
                         <Image x:Name="btnHide" Source="Assets\\Images\\leftArrow.png" Height="50" Width="50"></Image>
@@ -104,32 +104,31 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel HorizontalAlignment="Left" Width="70" Background="DarkGray" Opacity="0.8">                    
-                    <!--<Button x:Name="btnObjects" Content="OBJ" Click="btnObjects_Click"></Button>-->                                
-                <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
-                    <StackPanel Name="btnEraseObject" MouseLeftButtonDown="btnEraseObject_MouseLeftButtonDown">
-                        <Image Source="Assets\\Images\\eraser.png" Height="50"></Image>
-                        <TextBlock Text="Erase" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
-                    </StackPanel>
-                    <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
-                    <StackPanel x:Name="btnText" MouseLeftButtonDown="btnText_Click">
-                    <Image Source="Assets\\Images\\Text.png" Height="50" HorizontalAlignment="Center" ></Image>
-                    <TextBlock Text="Text" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
-                </StackPanel>
-                <TextBlock Text="--------" FontSize="20" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                <StackPanel HorizontalAlignment="Left" Width="70" Background="DarkGray" Opacity="0.8">
+                        <!--<Button x:Name="btnObjects" Content="OBJ" Click="btnObjects_Click"></Button>-->
+                        <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                        <StackPanel Name="btnEraseObject" MouseLeftButtonDown="btnEraseObject_MouseLeftButtonDown">
+                            <Image Source="Assets\\Images\\eraser.png" Height="50"></Image>
+                            <TextBlock Text="Erase" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                        <StackPanel x:Name="btnText" MouseLeftButtonDown="btnText_Click">
+                            <Image Source="Assets\\Images\\Text.png" Height="50" HorizontalAlignment="Center" ></Image>
+                            <TextBlock Text="Text" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="--------" FontSize="20" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
 
-                    <StackPanel Name="btnSave" MouseLeftButtonDown="btnSave_Click">
-                    <Image Source="Assets\\Images\\save.png" Height="50" MouseLeftButtonDown="btnSave_Click"></Image>
-                    <TextBlock Text="Save" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                        <StackPanel Name="btnSave" MouseLeftButtonDown="btnSave_Click">
+                            <Image Source="Assets\\Images\\save.png" Height="50" MouseLeftButtonDown="btnSave_Click"></Image>
+                            <TextBlock Text="Save" HorizontalAlignment="Center" Margin="0,0,0,-5" Foreground="White"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
+                        <StackPanel Name="btnSend" MouseLeftButtonDown="btnSend_Click">
+                            <Image Source="Assets\\Images\\send.png" Height="50" ></Image>
+                            <TextBlock Text="Send" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
-                <TextBlock Text="--------" FontSize="20" FontWeight="ExtraBold" Foreground="LightGray"></TextBlock>
-                    <StackPanel Name="btnSend" MouseLeftButtonDown="btnSend_Click">
-                    <Image Source="Assets\\Images\\send.png" Height="50" ></Image>
-                    <TextBlock Text="Send" HorizontalAlignment="Center" Foreground="White"></TextBlock>
-                </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            
         </Grid>
 
         <Border x:Name="spModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="600" MaxHeight="350" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
@@ -141,6 +140,20 @@
                     </Border>
                     <Border BorderBrush="#6BA92A" Background="LightBlue" Margin="140,0" CornerRadius="15,15,15,15" BorderThickness="0">
                         <Button x:Name="btnNo" FontSize="38" Width="150" Content="No" Foreground="Black" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnNo_Click"></Button>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border x:Name="spBackModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="600" MaxHeight="350" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
+            <StackPanel>
+                <TextBlock Text="Are you sure you want to go back?&#x0a;You're current work will be lost!" FontSize="38" Margin="0,20" Foreground="Black" FontWeight="ExtraBold" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="80,0">
+                    <Border BorderBrush="#6BA92A" Background="LightBlue" CornerRadius="15,15,15,15" BorderThickness="0">
+                        <Button x:Name="btnYesGoBack" FontSize="38" Width="150" Content="Yes" Foreground="Black" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnYesGoBack_Click"></Button>
+                    </Border>
+                    <Border BorderBrush="#6BA92A" Background="LightBlue" Margin="140,0" CornerRadius="15,15,15,15" BorderThickness="0">
+                        <Button x:Name="btnNoDontLeavePage" FontSize="38" Width="150" Content="No" Foreground="Black" BorderThickness="0" Background="LightBlue" FontWeight="Bold" Click="btnNoDontLeavePage_Click"></Button>
                     </Border>
                 </StackPanel>
             </StackPanel>

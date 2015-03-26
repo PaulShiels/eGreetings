@@ -19,8 +19,8 @@ namespace eGreetings
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private static List<string> templateImagesStrings = new List<string>();
-        private static List<string> objectImageStrings = new List<string>();
+        //private static List<string> templateImagesStrings = new List<string>();
+        //private static List<string> objectImageStrings = new List<string>();
 
         // Constructor
         public MainPage()
@@ -120,24 +120,24 @@ namespace eGreetings
             NavigationService.RemoveBackEntry();
         }
         
-        static async Task RunAsync()
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://egreetings.me/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //static async Task RunAsync()
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://egreetings.me/");
+        //        client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // HTTP GET
-                HttpResponseMessage response = await client.GetAsync("api/Values");
-                if (response.IsSuccessStatusCode)
-                {
-                    List<List<string>> images = await response.Content.ReadAsAsync<List<List<string>>>();
-                    MessageBox.Show("Images Loaded!");
-                    templateImagesStrings = images[0];
-                    objectImageStrings = images[1];
-                }
-            }
-        }
+        //        // HTTP GET
+        //        HttpResponseMessage response = await client.GetAsync("api/Values");
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            List<List<string>> images = await response.Content.ReadAsAsync<List<List<string>>>();
+        //            MessageBox.Show("Images Loaded!");
+        //            templateImagesStrings = images[0];
+        //            objectImageStrings = images[1];
+        //        }
+        //    }
+        //}
     }
 }

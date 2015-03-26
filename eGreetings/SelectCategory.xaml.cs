@@ -44,56 +44,57 @@ namespace eGreetings
 
         private async void lstCats_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await GetImagesAsync(((ListBox)sender).SelectedValue.ToString());
-            App.Current.catImages = convertImageStringsToImageList(imageStrings);
+            await App.Current.GetImagesAsync(ButtonClicked, ((ListBox)sender).SelectedValue.ToString());
+            App.Current.catImages = App.Current.convertImageStringsToImageList(App.Current.retrivedImageStringsTemp);
+            App.Current.retrivedImageStringsTemp.Clear();
             NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
         }
 
-        static async Task GetImagesAsync(string category)
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://egreetings.me/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                // HTTP GET
-                HttpResponseMessage response = await client.GetAsync("api/Values?greetingType=" + ButtonClicked + "&&category=" + category);
-                if (response.IsSuccessStatusCode)
-                {
-                    imageStrings = await response.Content.ReadAsAsync<List<string>>();
-                    
-                    //List<List<string>> images = await response.Content.ReadAsAsync<List<List<string>>>();
-                    //MessageBox.Show("Images Loaded!");
-                    //templateImagesStrings = images[0];
-                    //objectImageStrings = images[1];
-                }
-            }
-        }
+        //public static async Task GetImagesAsync(string buttonClicked, string category)
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://egreetings.me/");
+        //        client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        // HTTP GET
+        //        HttpResponseMessage response = await client.GetAsync("api/Values?greetingType=" + ButtonClicked + "&&category=" + category);
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            imageStrings = await response.Content.ReadAsAsync<List<string>>();
 
-        private List<Image> convertImageStringsToImageList(List<string> images)
-        {
-            List<Image> lstImages = new List<Image>();
-            foreach (var img in images)
-            {
-                Image i = new Image();
-                i.Source = base64image(img);
-                lstImages.Add(i);
-            }
-            return lstImages;
-        }
+        //            //List<List<string>> images = await response.Content.ReadAsAsync<List<List<string>>>();
+        //            //MessageBox.Show("Images Loaded!");
+        //            //templateImagesStrings = images[0];
+        //            //objectImageStrings = images[1];
+        //        }
+        //    }
+        //}
 
-        public static BitmapImage base64image(string base64string)
-        {
-            //Found this method that converts the base64 string back to a Bitmap Image at: http://stackoverflow.com/questions/14539005/convert-base64-string-to-image-in-c-sharp-on-windows-phone
-            byte[] fileBytes = Convert.FromBase64String(base64string);
+        //public static List<Image> convertImageStringsToImageList(List<string> images)
+        //{
+        //    List<Image> lstImages = new List<Image>();
+        //    foreach (var img in images)
+        //    {
+        //        Image i = new Image();
+        //        i.Source = base64image(img);
+        //        lstImages.Add(i);
+        //    }
+        //    return lstImages;
+        //}
 
-            using (MemoryStream ms = new MemoryStream(fileBytes, 0, fileBytes.Length))
-            {
-                ms.Write(fileBytes, 0, fileBytes.Length);
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.SetSource(ms);
-                return bitmapImage;
-            }
-        }
+        //public static BitmapImage base64image(string base64string)
+        //{
+        //    //Found this method that converts the base64 string back to a Bitmap Image at: http://stackoverflow.com/questions/14539005/convert-base64-string-to-image-in-c-sharp-on-windows-phone
+        //    byte[] fileBytes = Convert.FromBase64String(base64string);
+
+        //    using (MemoryStream ms = new MemoryStream(fileBytes, 0, fileBytes.Length))
+        //    {
+        //        ms.Write(fileBytes, 0, fileBytes.Length);
+        //        BitmapImage bitmapImage = new BitmapImage();
+        //        bitmapImage.SetSource(ms);
+        //        return bitmapImage;
+        //    }
+        //}
     }
 }
