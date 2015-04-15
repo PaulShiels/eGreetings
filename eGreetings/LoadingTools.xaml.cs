@@ -7,15 +7,23 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using ImageTools.IO.Gif;
 
 namespace eGreetings
 {
     public partial class LoadingTools : PhoneApplicationPage
     {
+        public Uri ImageSource { get; set; }
+
         public LoadingTools()
         {
-            InitializeComponent();
+            InitializeComponent();           
+            LayoutRoot.Background = App.Current.appBackgroundImage;
+            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            ImageSource = new Uri("http://egreetings.me/Images/loading_Logo.gif", UriKind.Absolute);
+            this.DataContext = this;
         }
+               
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -23,7 +31,7 @@ namespace eGreetings
             {
                 await App.Current.GetImagesAsync("objects", "all");
                 App.Current.objectImages = App.Current.convertImageStringsToImageList(App.Current.retrivedImageStringsTemp);
-                App.Current.retrivedImageStringsTemp.Clear();                
+                //App.Current.retrivedImageStringsTemp.Clear();                
             }
             NavigationService.Navigate(new Uri("/EditingPage.xaml", UriKind.Relative));
         }

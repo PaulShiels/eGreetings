@@ -26,7 +26,7 @@ namespace eGreetings
         public MainPage()
         {
             InitializeComponent();
-            App.Current.appBackgroundImage = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"\Assets\Images\MainBackground.jpg", UriKind.Relative)) };
+            App.Current.appBackgroundImage = new ImageBrush() { ImageSource = new BitmapImage(new Uri(@"\Assets\Images\MainBackground.jpg", UriKind.Relative))};
             LayoutRoot.Background = App.Current.appBackgroundImage;
             FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
             txtNewGreeting.FontFamily = fontFamily;
@@ -46,7 +46,7 @@ namespace eGreetings
 
         private void btnTemplates_Click(object sender, RoutedEventArgs e)
         {
-            SelectCategory.ButtonClicked = "templates";
+            Loading.ButtonClicked = "templates";
             //NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
             NavigationService.Navigate(new Uri("/SelectCategory.xaml", UriKind.Relative));
             //NavigationService.RemoveBackEntry();
@@ -56,7 +56,7 @@ namespace eGreetings
 
         private void btnNewGreeting_Click(object sender, RoutedEventArgs e)
         {
-            SelectCategory.ButtonClicked = "newGreeting";
+            Loading.ButtonClicked = "newGreeting";
             NavigationService.Navigate(new Uri("/SelectCategory.xaml", UriKind.Relative));
         }
 
@@ -116,8 +116,9 @@ namespace eGreetings
         {
             //Do your work here
             base.OnBackKeyPress(e);
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            NavigationService.RemoveBackEntry();
+            App.Current.Terminate();
+            //NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            //NavigationService.RemoveBackEntry();
         }
         
         //static async Task RunAsync()

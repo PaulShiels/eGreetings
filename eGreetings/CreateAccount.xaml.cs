@@ -27,6 +27,7 @@ namespace eGreetings
         {
             UserCredentials credentials = new UserCredentials(txtUsername.Text, Convert.ToDateTime(dpDob.Value), txtPassword.Text);
             RunAsync(credentials);
+
             ////Found this code at http://www.asp.net/web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
             
             ////Submit new account to the database
@@ -60,8 +61,36 @@ namespace eGreetings
             });
         }
 
+        
+
         static async Task RunAsync(UserCredentials credentials)
         {
+            //var client = new HttpClient();
+            //client.BaseAddress = new Uri("http://egreetings.me/");
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //var content = JsonConvert.SerializeObject(credentials,Formatting.None);
+            //var stringContent = new StringContent(content.ToString());
+            //var response = await client.PostAsync("api/Values", stringContent);
+
+            //if (response.IsSuccessStatusCode)
+            //    {
+            //        //Uri gizmoUrl = response.Headers.Location;
+
+            //        // HTTP PUT
+            //        //gizmo.Price = 80;   // Update price
+            //        //response = await client.PutAsJsonAsync(gizmoUrl, gizmo);
+
+            //        //// HTTP DELETE
+            //        //response = await client.DeleteAsync(gizmoUrl);
+            //    }
+
+//client.PostAsync("http://localhost:44268/api/test", credentials).ContinueWith(
+//    (postTask) =>
+//    {
+//        postTask.Result.EnsureSuccessStatusCode();
+//    });
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://egreetings.me/");

@@ -56,6 +56,7 @@ namespace eGreetings
                 imgBackgroundImage.Source = imageToEdit.Source;
                 populateObjectsListbox();
             }
+            App.Current.imageToSend = null;
         }
 
         private void populateObjectsListbox()
@@ -480,8 +481,16 @@ namespace eGreetings
         {
             e.Cancel = true;
             base.OnBackKeyPress(e);
-            spBackModal.Visibility = Visibility.Visible;
-            ToggleToolsButtons(false);
+
+            if (lbxObjects.Visibility == Visibility.Visible)
+            {
+                lbxObjects.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                spBackModal.Visibility = Visibility.Visible;
+                ToggleToolsButtons(false);
+            }
             //NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
             //ContentPanel.Children.RemoveAt(0);
         }

@@ -18,8 +18,7 @@ namespace eGreetings
 {
     public partial class SelectCategory : PhoneApplicationPage
     {
-        private static List<string> imageStrings = new List<string>();
-        public static string ButtonClicked;
+        private static List<string> imageStrings = new List<string>();        
 
         public SelectCategory()
         {
@@ -42,12 +41,12 @@ namespace eGreetings
             }
         }
 
-        private async void lstCats_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lstCats_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await App.Current.GetImagesAsync(ButtonClicked, ((ListBox)sender).SelectedValue.ToString());
-            App.Current.catImages = App.Current.convertImageStringsToImageList(App.Current.retrivedImageStringsTemp);
-            App.Current.retrivedImageStringsTemp.Clear();
-            NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
+            //App.Current.objectImages.Clear();
+            //App.Current.catImages.Clear();
+            Loading.Category=((ListBox)sender).SelectedValue.ToString();
+            NavigationService.Navigate(new Uri("/Loading.xaml", UriKind.Relative));
         }
 
         //public static async Task GetImagesAsync(string buttonClicked, string category)
