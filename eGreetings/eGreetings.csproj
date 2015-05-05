@@ -102,6 +102,9 @@
     <Compile Include="EditingPage.xaml.cs">
       <DependentUpon>EditingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmailSuccess.xaml.cs">
+      <DependentUpon>EmailSuccess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,9 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SavedImagesPage.xaml.cs">
+      <DependentUpon>SavedImagesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectCategory.xaml.cs">
       <DependentUpon>SelectCategory.xaml</DependentUpon>
     </Compile>
@@ -126,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SendingPage.xaml.cs">
+      <DependentUpon>SendingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SendPage.xaml.cs">
       <DependentUpon>SendPage.xaml</DependentUpon>
@@ -152,6 +161,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EmailSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Loading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,7 +185,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SavedImagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SelectCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SendingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,6 +237,7 @@
     <Resource Include="Assets\Images\loading_Logo.gif" />
     <Resource Include="Assets\Images\Loading_Only.gif" />
     <Content Include="Assets\Images\MainBackground.jpg" />
+    <Resource Include="Assets\Images\newtonsLoading1.gif" />
     <Content Include="Assets\Images\New_Icon.png" />
     <Content Include="Assets\Images\ObjectsGrid\ball.png" />
     <Content Include="Assets\Images\ObjectsGrid\balloon.png" />

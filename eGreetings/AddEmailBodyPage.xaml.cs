@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Media;
 
 namespace eGreetings
 {
@@ -16,6 +17,10 @@ namespace eGreetings
         {
             InitializeComponent();
             LayoutRoot.Background = App.Current.appBackgroundImage;
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+            lblAddMsg.FontFamily = fontFamily;
+            txtEmailBody.FontFamily = fontFamily;
+            btnNext.FontFamily = fontFamily;
         }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)

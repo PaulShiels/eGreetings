@@ -54,7 +54,7 @@
         <TextBlock Name="txtNewGreeting" Text="New Greeting" VerticalAlignment="Center" Foreground="Wheat" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="60" TextAlignment="Center" MouseLeftButtonUp="btnNewGreeting_Click"></TextBlock>
 
         <Image Source="\Assets\Images\Template_Icon.png" Grid.Row="1" MaxHeight="130" MouseLeftButtonUp="btnTemplates_Click"></Image>
-        <TextBlock Name="txtTemplates" VerticalAlignment="Center" Foreground="Wheat" Text="Templates" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="58" TextAlignment="Center" MouseLeftButtonUp="btnTemplates_Click"></TextBlock>
+        <TextBlock Name="txtTemplates" VerticalAlignment="Center" Foreground="Wheat" Text="Messages" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="58" TextAlignment="Center" MouseLeftButtonUp="btnTemplates_Click"></TextBlock>
 
         <Image Source="\Assets\Images\Save_Icon.png" MaxHeight="130" Grid.Row="2" MouseLeftButtonUp="btnSavedGreetings_Click"></Image>
         <TextBlock Name="txtSavedGreetings" VerticalAlignment="Center" Text="Saved Greetings" Foreground="Wheat" HorizontalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Grid.Row="2" FontSize="60" TextAlignment="Center" MouseLeftButtonUp="btnSavedGreetings_Click"></TextBlock>

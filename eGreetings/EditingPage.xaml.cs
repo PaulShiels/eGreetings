@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Shapes;
 using Windows.Phone.UI.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace eGreetings
 {
@@ -35,6 +36,8 @@ namespace eGreetings
         private Color drawingStrokeColour = Colors.White;
         private bool eraserSelected;
         private bool penSelected;
+        private WriteableBitmap wb;
+        private bool imageSaved=false;
 
         //Create the grid to hold the objects
         Grid objectsGrid = new Grid();
@@ -150,43 +153,58 @@ namespace eGreetings
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             unselectTools();
+            PrepareImageForSending();
             saveImage();            
         }
 
-        private void saveImage()
+        private void PrepareImageForSending()
         {
             //I found the follwing code to convert an image to a base64 string at: http://kodierer.blogspot.ie/2010/12/sending-windows-phone-screenshots-in.html
             // Render the element at the maximum possible size
             ScaleTransform transform = null;
-            //if (canvasImage.ActualWidth * canvasImage.ActualHeight > 240 * 400)
-            //{
-            //    // Calculate a uniform scale with the minimum possible size
-            //    var scaleX = 240.0 / canvasImage.ActualWidth;
-            //    var scaleY = 400.0 / canvasImage.ActualHeight;
-            //    var scale = scaleX < scaleY ? scaleX : scaleY;
-            //    transform = new ScaleTransform { ScaleX = scale, ScaleY = scale };
-            //}
-            var wb = new WriteableBitmap(canvasImage, transform);
+            wb = new WriteableBitmap(canvasImage, transform);
             string imageStringToSave;
             using (var memoryStream = new MemoryStream())
             {
                 // Encode the screenshot as JPEG with a quality of 70%
                 wb.SaveJpeg(memoryStream, wb.PixelWidth, wb.PixelHeight, 0, 70);
                 memoryStream.Seek(0, SeekOrigin.Begin);
-               
+
                 // Convert binary data to Base64 string
                 var bytes = memoryStream.ToArray();
                 App.Current.imageToSend = bytes;
                 var base64String = Convert.ToBase64String(bytes);
                 imageStringToSave = base64String;
-                
+
                 //MessageBox.Show(base64String);
                 //byte[] img = Convert.FromBase64String(base64String);
 
                 //imageToSave.Source = base64image(base64String);
                 //NavigationService.Navigate(new Uri("/Page1.xaml", UriKind.Relative));
             }
-                        
+        }
+
+        private void saveImage()
+        {
+            //Save image to local images folder
+            //Found this method here: http://www.wolfgang-ziegler.com/blog/saving-an-image-to-the-media-library-on-windows-phone
+            string fileName = "eGreetings";
+            var store = IsolatedStorageFile.GetUserStoreForApplication();
+            // If a file with this name already exists, delete it.
+            var tempName = Guid.NewGuid().ToString();
+            using (var fileStream = store.CreateFile(tempName))
+            {
+                // Save the WriteableBitmap into isolated storage as JPEG.
+                Extensions.SaveJpeg(wb, fileStream, wb.PixelWidth, wb.PixelHeight, 0, 100);
+            }
+            using (var fileStream = store.OpenFile(tempName, FileMode.Open, FileAccess.Read))
+            {
+                // Now, add the JPEG image to the photos library.
+                var library = new MediaLibrary();
+                var pic = library.SavePicture(fileName, fileStream);
+            }
+
+            imageSaved = true;
 
             //Uri address = new Uri("http://egreetings.me");
             //string data = "/api/Values?base64ImageString=" + imageStringToSave;
@@ -200,8 +218,11 @@ namespace eGreetings
             //{
             //    MessageBox.Show(ex.Message.ToString());
             //}
+
+            
         }
 
+        
         private void client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
         {
             MessageBox.Show(e.Result.ToString());
@@ -223,11 +244,20 @@ namespace eGreetings
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            unselectTools();
-            spModal.Visibility = Visibility.Visible;
-            Canvas.SetZIndex(spModal, 2);
-            Canvas.SetZIndex(ContentPanel, 0);
-            ContentPanel.Opacity=0.5;
+            if (!imageSaved)
+            {
+                unselectTools();
+                spModal.Visibility = Visibility.Visible;
+                Canvas.SetZIndex(spModal, 2);
+                Canvas.SetZIndex(ContentPanel, 0);
+                ContentPanel.Opacity = 0.5;
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
+                spModal.Visibility = Visibility.Collapsed;
+                ContentPanel.Opacity = 1;
+            }
         }
 
         private void btnText_Click(object sender, RoutedEventArgs e)
@@ -341,6 +371,7 @@ namespace eGreetings
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
+            PrepareImageForSending();
             saveImage();
             NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
             spModal.Visibility = Visibility.Collapsed;
@@ -349,6 +380,7 @@ namespace eGreetings
 
         private void btnNo_Click(object sender, RoutedEventArgs e)
         {
+            PrepareImageForSending();
             NavigationService.Navigate(new Uri("/AddEmailBodyPage.xaml", UriKind.Relative));
             spModal.Visibility = Visibility.Collapsed;
             ContentPanel.Opacity = 1;
@@ -495,7 +527,22 @@ namespace eGreetings
             //ContentPanel.Children.RemoveAt(0);
         }
 
-
-        
+        //public static void SaveToMediaLibrary(this WriteableBitmap wb, string fileName)
+        //{
+        //    var store = IsolatedStorageFile.GetUserStoreForApplication();
+        //    // If a file with this name already exists, delete it.
+        //    var tempName = Guid.NewGuid().ToString();
+        //    using (var fileStream = store.CreateFile(tempName))
+        //    {
+        //        // Save the WriteableBitmap into isolated storage as JPEG.
+        //        Extensions.SaveJpeg(wb, fileStream, wb.PixelWidth, wb.PixelHeight, 0, 100);
+        //    }
+        //    using (var fileStream = store.OpenFile(tempName, FileMode.Open, FileAccess.Read))
+        //    {
+        //        // Now, add the JPEG image to the photos library.
+        //        var library = new MediaLibrary();
+        //        var pic = library.SavePicture(fileName, fileStream);
+        //    }
+        //}
     }
 }

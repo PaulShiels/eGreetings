@@ -181,3 +181,6 @@ C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debu
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.csprojResolveAssemblyReference.cache
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\Page1.g.cs
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\Loading.g.cs
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\SavedImagesPage.g.cs
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\SendingPage.g.cs
+C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\EmailSuccess.g.cs

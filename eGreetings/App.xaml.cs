@@ -24,7 +24,7 @@ namespace eGreetings
         //public List<Image> TemplateImages = new List<Image>();
         public string emailBody;
         public string emailImageName;
-        public Image savedImage = new Image();
+        public List<BitmapImage> savedImages = new List<BitmapImage>();
         public List<Image> objectImages = new List<Image>();
         public byte[] imageToSend;
         public List<string> retrivedImageStringsTemp = new List<string>();

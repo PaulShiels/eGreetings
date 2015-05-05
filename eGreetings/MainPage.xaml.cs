@@ -14,11 +14,16 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using System.Windows.Media;
+using System.IO.IsolatedStorage;
+using Microsoft.Xna.Framework.Media;
+using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace eGreetings
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        //private ObservableCollection<IEnumerable> _pics = new ObservableCollection<IEnumerable>();
         //private static List<string> templateImagesStrings = new List<string>();
         //private static List<string> objectImageStrings = new List<string>();
 
@@ -62,8 +67,72 @@ namespace eGreetings
 
         private void btnSavedGreetings_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
+            try
+            {
+                //http://blogs.msdn.com/b/johnalioto/archive/2011/01/28/10121728.aspx
+                // Work around for known bug in the media framework.  Hits the static constructors
+                // so the user does not need to go to the picture hub first.
+                MediaPlayer.Queue.ToString();
+
+                MediaLibrary ml = null;
+                PictureAlbum savedPics = null;
+
+                foreach (MediaSource source in MediaSource.GetAvailableMediaSources())
+                {
+                    if (source.MediaSourceType == MediaSourceType.LocalDevice)
+                    {
+                        ml = new MediaLibrary(source);
+                        PictureAlbumCollection allAlbums = ml.RootPictureAlbum.Albums;
+
+                        foreach (PictureAlbum album in allAlbums)
+                        {
+                            if (album.Name == "Saved Pictures")
+                            {
+                                savedPics = album;
+                            }
+                        }
+                    }
+                }
+
+                App.Current.savedImages.Clear();
+                foreach (Picture p in savedPics.Pictures)
+                {
+                    if (p.Name.Contains("eGreetings"))
+                    {
+                        BitmapImage b = new BitmapImage();
+                        b.SetSource(p.GetImage());
+                        App.Current.savedImages.Add(b);
+                    }
+                }
+            }
+            catch
+            {
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
+
+
+            NavigationService.Navigate(new Uri("/SavedImagesPage.xaml", UriKind.Relative));
         }
+
+        //Found code to use Isolated storage here: http://www.baileystein.com/2014/07/28/saving-bitmapimages-isolatedstorage-windows-phone-8-app/
+        //public BitmapImage GetImage(string fname)
+        //{
+        //    BitmapImage img = new BitmapImage();
+        //    try
+        //    {
+        //        using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
+        //        {
+        //            using (IsolatedStorageFileStream fileStream = isf.OpenFile(fname, FileMode.Open, FileAccess.Read))
+        //            {
+        //                img.SetSource(fileStream);
+        //                fileStream.Close();
+        //            }
+        //        }
+        //    }
+        //    catch { }
+
+        //    return img;
+        //}
 
         private void btnRecentlySent_Click(object sender, RoutedEventArgs e)
         {

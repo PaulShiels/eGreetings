@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\eGreetings_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="02/04/2015 00:13:08">
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="02/04/2015 00:13:01" />
+﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\eGreetings_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="06/05/2015 00:17:18">
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Debug\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="06/05/2015 00:17:12" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\Dancing Script.ttf" archivePath="Assets\Fonts\Dancing Script.ttf" lastWriteTime="18/03/2015 23:17:07" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\Cucrl.ttf" archivePath="Assets\Fonts\Cucrl.ttf" lastWriteTime="18/03/2015 23:28:40" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\konstytucyja_091.ttf" archivePath="Assets\Fonts\konstytucyja_091.ttf" lastWriteTime="18/03/2015 23:41:58" />
@@ -96,5 +96,5 @@
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.xml" archivePath="System.Net.Http.Extensions.xml" lastWriteTime="11/03/2015 01:32:05" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" archivePath="System.Net.Http.Formatting.xml" lastWriteTime="12/03/2015 18:50:38" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.xml" archivePath="System.Net.Http.Primitives.xml" lastWriteTime="11/03/2015 01:32:05" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="30/03/2015 17:53:03" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="05/05/2015 15:45:58" />
 </xapCache>

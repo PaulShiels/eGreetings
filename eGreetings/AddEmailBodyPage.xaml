@@ -26,9 +26,17 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Grid.Row="0" Margin="12,17,0,28">
-                <TextBlock Text="Would You Like To Send A Message Along With Your Greeting?" FontSize="35" HorizontalAlignment="Stretch"   TextWrapping="Wrap"/>
-                <TextBox x:Name="txtEmailBody" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,50" MinHeight="400"></TextBox>
-                <Button x:Name="btnNext" Content="Next" FontSize="34" HorizontalAlignment="Right" Click="btnNext_Click"></Button>
+                <TextBlock Name="lblAddMsg" Text="Would You Like To Send A Message Along With Your Greeting?" FontSize="42" HorizontalAlignment="Stretch"   TextWrapping="Wrap"/>
+                <Border CornerRadius="8" BorderThickness="3" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
+                    <TextBox x:Name="txtEmailBody" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0" Background="RosyBrown" FontSize="36" BorderBrush="RosyBrown" MinHeight="400"></TextBox>
+                </Border>
+                
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="30">
+                <Border CornerRadius="15" BorderThickness="2" BorderBrush="Wheat" Background="RosyBrown">
+                    <Button x:Name="btnNext" Content="Next" FontSize="34" HorizontalAlignment="Right" Margin="-10" BorderBrush="RosyBrown" Click="btnNext_Click"></Button>
+                </Border>
             </StackPanel>
         </Grid>
     </Grid>

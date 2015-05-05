@@ -15,17 +15,24 @@ using System.IO.IsolatedStorage;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using Windows.Storage;
+using System.Windows.Media;
 
 namespace eGreetings
 {
     public partial class SendPage : PhoneApplicationPage
     {
         //create a new MailMessage object
-        MailMessage mailMessage = new MailMessage();
+        public static MailMessage mailMessage = new MailMessage();
 
         public SendPage()
         {
             InitializeComponent();
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+            txtRecipients.FontFamily = fontFamily;
+            txtRecipient.FontFamily = fontFamily;
+            btnSend.FontFamily = fontFamily;
+            txtRecipients.FontSize = 38;
+            txtRecipient.FontSize = 38;
             LayoutRoot.Background = App.Current.appBackgroundImage;
         }
 
@@ -37,6 +44,7 @@ namespace eGreetings
 
         private void mailMessage_Progress(object sender, Venetasoft.WP7.ValueEventArgs<int> e)
         {
+            var o = sender;
         }
 
         private void mailMessage_MailSent(object sender, Venetasoft.WP7.ValueEventArgs<bool> e)
@@ -52,7 +60,8 @@ namespace eGreetings
             }
             else
             {
-                MessageBox.Show("Email successfully queued to Microsoft Live mail server.");
+                //MessageBox.Show("Email successfully queued to Microsoft Live mail server.");
+                NavigationService.Navigate(new Uri("/EmailSuccess.xaml", UriKind.Relative));
             }            
         }
 
@@ -64,7 +73,7 @@ namespace eGreetings
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             string recipient = txtRecipient.Text;
-            string greetingSender = txtSender.Text;
+            //string greetingSender = txtSender.Text;
 
             //create a new MailMessage object
             MailMessage mailMessage = new MailMessage();
@@ -84,7 +93,7 @@ namespace eGreetings
             
             //set a Live/Hotmail or Gmail, or a custom SMTP account
             mailMessage.UserName = "egreetingswp@gmail.com";                        // ****@gmail.com, ****@yourserver.com, etc.
-            mailMessage.Password = "greetingstou";
+            mailMessage.Password = "greetingsfromall";
             mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;   //you can set your  CustomSMTP server/port/no-ssl
             //mailMessage.SetCustomSMTPServer("smtp1r.cp.blacknight.com", 587, false);
             mailMessage.From = "egreetingswp@gmail.com";
@@ -111,6 +120,8 @@ namespace eGreetings
             mailMessage.Progress += mailMessage_Progress;
             //send email (async)
             mailMessage.Send();
+            NavigationService.Navigate(new Uri("/SendingPage.xaml", UriKind.Relative));
+            
         }
         
     }
