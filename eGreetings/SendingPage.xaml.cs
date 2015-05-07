@@ -27,5 +27,11 @@ namespace eGreetings
             txtSending.FontFamily = fontFamily;
         }
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnBackKeyPress(e);
+        }
+
     }
 }

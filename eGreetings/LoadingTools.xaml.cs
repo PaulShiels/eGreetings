@@ -35,5 +35,13 @@ namespace eGreetings
             }
             NavigationService.Navigate(new Uri("/EditingPage.xaml", UriKind.Relative));
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnBackKeyPress(e);
+            //NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
+            //ContentPanel.Children.RemoveAt(0);
+        }
     }
 }

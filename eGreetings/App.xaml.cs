@@ -255,6 +255,7 @@ namespace eGreetings
                 // HTTP GET
                 HttpResponseMessage response = await client.GetAsync("api/Values?greetingType=" + buttonClicked + "&&category=" + category);
                 if (response.IsSuccessStatusCode)
+                    
                 {
                      retrivedImageStringsTemp = await response.Content.ReadAsAsync<List<string>>();
 

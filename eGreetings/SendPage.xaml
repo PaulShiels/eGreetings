@@ -9,7 +9,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Landscape"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
 
@@ -30,8 +30,9 @@
                 <TextBox x:Name="txtSender"></TextBox>-->
                 <TextBlock Name="txtRecipients" Text="Recipients Email Address" FontSize="34" Margin="15,50,0,0"></TextBlock>
                 <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
-                    <TextBox x:Name="txtRecipient" Padding="15,0" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                    <TextBox x:Name="txtRecipient" InputScope="EmailNameOrAddress" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
                 </Border>
+                <TextBlock Name="txtError" Text="Sorry, you entered an invalid email" Margin="10" TextWrapping="Wrap" Foreground="Salmon" Visibility="Collapsed"></TextBlock>
 
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="30">

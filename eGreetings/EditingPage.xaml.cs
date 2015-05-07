@@ -11,7 +11,6 @@ using eGreetings.Resources;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Windows.Input;
-using System.IO.IsolatedStorage;
 using System.IO;
 using System.Windows.Media;
 using Microsoft.Phone.Tasks;
@@ -20,6 +19,7 @@ using System.Windows.Documents;
 using System.Windows.Shapes;
 using Windows.Phone.UI.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO.IsolatedStorage;
 
 namespace eGreetings
 {
@@ -393,16 +393,16 @@ namespace eGreetings
             switch (lpFontSize.SelectedIndex)
             {
                 case 0:
-                    fontSize = 28;
+                    fontSize = 48;
                     break;
                 case 1:
-                    fontSize = 42;
+                    fontSize = 60;
                     break;
                 case 2:
-                    fontSize = 64;
+                    fontSize = 80;
                     break;
                 case 3:
-                    fontSize = 86;
+                    fontSize = 110;
                     break;
             }
 

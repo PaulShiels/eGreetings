@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eGreetings
 {
-    class UserCredentials
+    public class UserCredentials
     {
         public string Username { get; set; }
         public DateTime Dob { get; set; }

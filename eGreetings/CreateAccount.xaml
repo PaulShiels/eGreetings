@@ -27,16 +27,28 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock FontSize="34" Margin="10,20,0,0" Text="Username"></TextBlock>
-                <TextBox x:Name="txtUsername"></TextBox>
-                <TextBlock FontSize="34" Margin="10,20,0,0" Text="Password"></TextBlock>
-                <TextBox x:Name="txtPassword"></TextBox>                
-                <TextBlock FontSize="34" Margin="10,20,0,0" Text="Confirm Password"></TextBlock>
-                <TextBox x:Name="txtConfirmPassword"></TextBox>
-                <TextBlock FontSize="34" Margin="10,20,0,0" Text="Date of birth"></TextBlock>
-                <toolkit:DatePicker x:Name="dpDob"/>
-                <Button x:Name="btnLogin" Content="Submit" FontSize="34" Margin="10,50" Click="btnLogin_Click"></Button>
+                <TextBlock Name="lblUsername" FontSize="34" Margin="10,20,0,0" Text="Username"></TextBlock>
+                <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
+                    <TextBox x:Name="txtUsername" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                </Border>
+                <TextBlock Name="lblPassword" FontSize="34" Margin="10,20,0,0" Text="Password"></TextBlock>
+                <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
+                    <TextBox x:Name="txtPassword" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                </Border>
+                <TextBlock Name="lblConforkmPassword" FontSize="34" Margin="10,20,0,0" Text="Confirm Password"></TextBlock>
+                <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
+                    <TextBox x:Name="txtConfirmPassword" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                </Border>
+                <TextBlock Name="txtPasswordError" FontSize="48" Text="Passwords do not match" Margin="10" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Gold"></TextBlock>
+                <TextBlock Name="txtUserExistsError" FontSize="48" Text="Sorry that username already exists" Margin="10" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Gold"></TextBlock>
+                <!--<TextBlock FontSize="34" Margin="10,20,0,0" Text="Date of birth"></TextBlock>
+                <toolkit:DatePicker x:Name="dpDob"/>-->
+                
             </StackPanel>
+            
+            <Border Margin="40" VerticalAlignment="Bottom" CornerRadius="15" BorderThickness="2" BorderBrush="Wheat" Background="RosyBrown">
+                <Button x:Name="btnLogin" Content="Submit" FontSize="34" VerticalAlignment="Bottom" Click="btnLogin_Click" HorizontalContentAlignment="Center" Margin="-10" BorderBrush="RosyBrown" Width="250"></Button>
+            </Border>
         </Grid>
     </Grid>
 

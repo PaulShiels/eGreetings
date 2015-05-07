@@ -33,5 +33,13 @@ namespace eGreetings
             App.Current.retrivedImageStringsTemp.Clear();
             NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnBackKeyPress(e);
+            //NavigationService.Navigate(new Uri(String.Format("/TemplateListPage.xaml", Guid.NewGuid().ToString()), UriKind.Relative));
+            //ContentPanel.Children.RemoveAt(0);
+        }
     }
 }

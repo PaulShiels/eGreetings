@@ -16,6 +16,8 @@ using System.Net.NetworkInformation;
 using System.Reflection;
 using Windows.Storage;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
+//using System.Text.RegularExpressions;
 
 namespace eGreetings
 {
@@ -31,8 +33,10 @@ namespace eGreetings
             txtRecipients.FontFamily = fontFamily;
             txtRecipient.FontFamily = fontFamily;
             btnSend.FontFamily = fontFamily;
+            txtError.FontFamily = fontFamily;
             txtRecipients.FontSize = 38;
             txtRecipient.FontSize = 38;
+            txtError.FontSize = 38;
             LayoutRoot.Background = App.Current.appBackgroundImage;
         }
 
@@ -75,53 +79,61 @@ namespace eGreetings
             string recipient = txtRecipient.Text;
             //string greetingSender = txtSender.Text;
 
-            //create a new MailMessage object
-            MailMessage mailMessage = new MailMessage();
+            Match match = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Match(recipient);
 
-            #region validation checks
-            if (NetworkInterface.GetIsNetworkAvailable() == false)
+            if (match.Success)
             {
-                MessageBox.Show("Network is unavailable.");
-                return;
+                //create a new MailMessage object
+                MailMessage mailMessage = new MailMessage();
+
+                #region validation checks
+                if (NetworkInterface.GetIsNetworkAvailable() == false)
+                {
+                    MessageBox.Show("Network is unavailable.");
+                    return;
+                }
+                if (mailMessage != null && mailMessage.Busy == true)
+                {
+                    MessageBox.Show("Pending operation in progress, please wait..");
+                    return;
+                }
+                #endregion
+
+                //set a Live/Hotmail or Gmail, or a custom SMTP account
+                mailMessage.UserName = "egreetingswp@gmail.com";                        // ****@gmail.com, ****@yourserver.com, etc.
+                mailMessage.Password = "greetingsfromall";
+                mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;   //you can set your  CustomSMTP server/port/no-ssl
+                //mailMessage.SetCustomSMTPServer("smtp1r.cp.blacknight.com", 587, false);
+                mailMessage.From = "egreetingswp@gmail.com";
+                //set mail data
+                mailMessage.To = txtRecipient.Text;
+                mailMessage.Subject = "eGreetings to you";
+                mailMessage.Body = "Hello";//App.Current.emailBody;   //text or HTML
+
+                //attach ANY KIND of file from a resource or IsolatedStorage path
+                //Image SeasonGreetings = new Image() { Source = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative)) };
+                //BitmapImage b = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative));
+                //FileInfo fi = new FileInfo(App.Current.imageToSend.Source.ToString());//b.UriSource.ToString());
+
+                //string image = ((BitmapImage)(App.Current.selectedImage.Source)).UriSource.ToString();
+                //string imageName = image.Substring(14, image.Length - 14);
+                mailMessage.AddAttachment(App.Current.imageToSend, "Greetings.jpg");
+
+                //attach from in-memory data:
+                //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
+                //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
+                //set message event handlers
+                mailMessage.Error += mailMessage_Error;
+                mailMessage.MailSent += mailMessage_MailSent;
+                mailMessage.Progress += mailMessage_Progress;
+                //send email (async)
+                mailMessage.Send();
+                NavigationService.Navigate(new Uri("/SendingPage.xaml", UriKind.Relative));
             }
-            if (mailMessage != null && mailMessage.Busy == true)
+            else
             {
-                MessageBox.Show("Pending operation in progress, please wait..");
-                return;
+                txtError.Visibility = Visibility.Visible;
             }
-            #endregion
-            
-            //set a Live/Hotmail or Gmail, or a custom SMTP account
-            mailMessage.UserName = "egreetingswp@gmail.com";                        // ****@gmail.com, ****@yourserver.com, etc.
-            mailMessage.Password = "greetingsfromall";
-            mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;   //you can set your  CustomSMTP server/port/no-ssl
-            //mailMessage.SetCustomSMTPServer("smtp1r.cp.blacknight.com", 587, false);
-            mailMessage.From = "egreetingswp@gmail.com";
-            //set mail data
-            mailMessage.To = txtRecipient.Text;
-            mailMessage.Subject = "eGreetings to you";
-            mailMessage.Body = "Hello";//App.Current.emailBody;   //text or HTML
-
-            //attach ANY KIND of file from a resource or IsolatedStorage path
-            //Image SeasonGreetings = new Image() { Source = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative)) };
-            //BitmapImage b = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative));
-            //FileInfo fi = new FileInfo(App.Current.imageToSend.Source.ToString());//b.UriSource.ToString());
-            
-            //string image = ((BitmapImage)(App.Current.selectedImage.Source)).UriSource.ToString();
-            //string imageName = image.Substring(14, image.Length - 14);
-            mailMessage.AddAttachment(App.Current.imageToSend,"Greetings.jpg");
-
-            //attach from in-memory data:
-            //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
-            //mailMessage.AddAttachment(Encoding.UTF8.GetBytes("yesssss".ToCharArray()), "memoryfile.txt");
-            //set message event handlers
-            mailMessage.Error += mailMessage_Error;
-            mailMessage.MailSent += mailMessage_MailSent;
-            mailMessage.Progress += mailMessage_Progress;
-            //send email (async)
-            mailMessage.Send();
-            NavigationService.Navigate(new Uri("/SendingPage.xaml", UriKind.Relative));
-            
         }
         
     }
