@@ -101,53 +101,54 @@ namespace eGreetings
 
         private void btnSavedGreetings_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
 
-            //try
-            //{
-            //    //http://blogs.msdn.com/b/johnalioto/archive/2011/01/28/10121728.aspx
-            //    // Work around for known bug in the media framework.  Hits the static constructors
-            //    // so the user does not need to go to the picture hub first.
-            //    MediaPlayer.Queue.ToString();
+            try
+            {
+                //http://blogs.msdn.com/b/johnalioto/archive/2011/01/28/10121728.aspx
+                // Work around for known bug in the media framework.  Hits the static constructors
+                // so the user does not need to go to the picture hub first.
+                MediaPlayer.Queue.ToString();
 
-            //    MediaLibrary ml = null;
-            //    PictureAlbum savedPics = null;
+                MediaLibrary ml = null;
+                PictureAlbum savedPics = null;
 
-            //    foreach (MediaSource source in MediaSource.GetAvailableMediaSources())
-            //    {
-            //        if (source.MediaSourceType == MediaSourceType.LocalDevice)
-            //        {
-            //            ml = new MediaLibrary(source);
-            //            PictureAlbumCollection allAlbums = ml.RootPictureAlbum.Albums;
+                foreach (MediaSource source in MediaSource.GetAvailableMediaSources())
+                {
+                    if (source.MediaSourceType == MediaSourceType.LocalDevice)
+                    {
+                        ml = new MediaLibrary(source);
+                        PictureAlbumCollection allAlbums = ml.RootPictureAlbum.Albums;
 
-            //            foreach (PictureAlbum album in allAlbums)
-            //            {
-            //                if (album.Name == "Saved Pictures")
-            //                {
-            //                    savedPics = album;
-            //                }
-            //            }
-            //        }
-            //    }
+                        foreach (PictureAlbum album in allAlbums)
+                        {
+                            if (album.Name == "Saved Pictures")
+                            {
+                                savedPics = album;
+                            }
+                        }
+                    }
+                }
 
-            //    App.Current.savedImages.Clear();
-            //    foreach (Picture p in savedPics.Pictures)
-            //    {
-            //        if (p.Name.Contains("eGreetings"))
-            //        {
-            //            BitmapImage b = new BitmapImage();
-            //            b.SetSource(p.GetImage());
-            //            App.Current.savedImages.Add(b);
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            //}
+                App.Current.savedImages.Clear();
+                foreach (Picture p in savedPics.Pictures)
+                {
+                    if (p.Name.Contains("eGreetings"))
+                    {
+                        BitmapImage b = new BitmapImage();
+                        b.SetSource(p.GetImage());
+                        App.Current.savedImages.Add(b);
+                    }
+                }
+                NavigationService.Navigate(new Uri("/SavedImagesPage.xaml", UriKind.Relative));
+            }
+            catch
+            {
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
 
 
-            //NavigationService.Navigate(new Uri("/SavedImagesPage.xaml", UriKind.Relative));
+            
         }
 
         //Found code to use Isolated storage here: http://www.baileystein.com/2014/07/28/saving-bitmapimages-isolatedstorage-windows-phone-8-app/

@@ -108,7 +108,7 @@ namespace eGreetings
                 //set mail data
                 mailMessage.To = txtRecipient.Text;
                 mailMessage.Subject = "eGreetings to you";
-                mailMessage.Body = "Hello";//App.Current.emailBody;   //text or HTML
+                mailMessage.Body = App.Current.emailBody;   //text or HTML
 
                 //attach ANY KIND of file from a resource or IsolatedStorage path
                 //Image SeasonGreetings = new Image() { Source = new BitmapImage(new Uri("Assets\\Images\\seasons_greetings.jpg", UriKind.Relative)) };

@@ -25,6 +25,7 @@ namespace eGreetings
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
+            App.Current.emailBody = txtEmailBody.Text;
             NavigationService.Navigate(new Uri("/SendPage.xaml", UriKind.Relative));
         }
     }
