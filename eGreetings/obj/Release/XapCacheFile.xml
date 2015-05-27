@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\eGreetings_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="08/05/2015 14:17:05">
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Release\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="08/05/2015 13:52:01" />
+﻿<xapCache source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\eGreetings_Release_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="27/05/2015 22:09:35">
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\obj\Release\eGreetings.dll" archivePath="eGreetings.dll" lastWriteTime="27/05/2015 20:38:15" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\Dancing Script.ttf" archivePath="Assets\Fonts\Dancing Script.ttf" lastWriteTime="18/03/2015 23:17:07" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\Cucrl.ttf" archivePath="Assets\Fonts\Cucrl.ttf" lastWriteTime="18/03/2015 23:28:40" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Fonts\konstytucyja_091.ttf" archivePath="Assets\Fonts\konstytucyja_091.ttf" lastWriteTime="18/03/2015 23:41:58" />
@@ -47,10 +47,13 @@
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Images\Smiley.png" archivePath="Assets\Images\Smiley.png" lastWriteTime="11/02/2015 13:09:36" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Images\Template_Icon.png" archivePath="Assets\Images\Template_Icon.png" lastWriteTime="25/03/2015 14:27:32" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Images\Text.png" archivePath="Assets\Images\Text.png" lastWriteTime="11/02/2015 14:14:14" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="04/02/2015 14:28:34" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="04/02/2015 14:28:34" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="04/02/2015 14:28:34" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="04/02/2015 14:28:34" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="27/05/2015 16:12:40" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipTileLarge.png" archivePath="Assets\Tiles\FlipTileLarge.png" lastWriteTime="27/05/2015 16:04:13" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipTileMedium.png" archivePath="Assets\Tiles\FlipTileMedium.png" lastWriteTime="27/05/2015 16:05:16" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\FlipTileSmall.png" archivePath="Assets\Tiles\FlipTileSmall.png" lastWriteTime="27/05/2015 16:19:49" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicSmall.png" archivePath="Assets\Tiles\IconicSmall.png" lastWriteTime="27/05/2015 22:06:07" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="27/05/2015 22:09:15" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="27/05/2015 16:08:38" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Toolkit.Content\ApplicationBar.Add.png" archivePath="Toolkit.Content\ApplicationBar.Add.png" lastWriteTime="25/02/2015 21:34:08" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Toolkit.Content\ApplicationBar.Cancel.png" archivePath="Toolkit.Content\ApplicationBar.Cancel.png" lastWriteTime="25/02/2015 21:34:08" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Toolkit.Content\ApplicationBar.Check.png" archivePath="Toolkit.Content\ApplicationBar.Check.png" lastWriteTime="25/02/2015 21:34:08" />
@@ -60,7 +63,6 @@
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Toolkit.Content\ApplicationBar.Save.png" archivePath="Toolkit.Content\ApplicationBar.Save.png" lastWriteTime="25/02/2015 21:39:26" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Toolkit.Content\ApplicationBar.Select.png" archivePath="Toolkit.Content\ApplicationBar.Select.png" lastWriteTime="25/02/2015 21:34:08" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="06/05/2015 13:12:15" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="04/02/2015 14:28:34" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Coding4Fun.Toolkit.Audio.2.0.8\lib\windowsphone8\Coding4Fun.Toolkit.Audio.dll" archivePath="Coding4Fun.Toolkit.Audio.dll" lastWriteTime="26/02/2015 22:30:33" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll" archivePath="Coding4Fun.Toolkit.Controls.dll" lastWriteTime="26/02/2015 22:50:59" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.dll" archivePath="Coding4Fun.Toolkit.dll" lastWriteTime="26/02/2015 22:50:59" />
@@ -97,5 +99,5 @@
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" archivePath="System.Net.Http.Formatting.xml" lastWriteTime="12/03/2015 18:50:38" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.xml" archivePath="System.Net.Http.Primitives.xml" lastWriteTime="11/03/2015 01:32:05" />
   <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\eGreetingsLogo.png" archivePath="eGreetingsLogo.png" lastWriteTime="06/05/2015 14:57:05" />
-  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="08/05/2015 14:17:02" />
+  <file source="C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="27/05/2015 20:38:19" />
 </xapCache>

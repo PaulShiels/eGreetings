@@ -50,7 +50,7 @@ namespace eGreetings
             //RunAsync();
             if (NetworkInterface.GetIsNetworkAvailable() == false)
             {
-                MessageBoxResult result = MessageBox.Show("Network is unavailable therefore Egreetings is unable to run. Egreetings will now close.");
+                MessageBoxResult result = MessageBox.Show("Network is unavailable therefore eGreetings is unable to run. eGreetings will now close.");
                 if(result == MessageBoxResult.OK)
                 {
                     App.Current.Terminate();

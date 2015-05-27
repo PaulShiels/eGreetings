@@ -275,15 +275,13 @@
     <Content Include="Assets\Images\Smiley.png" />
     <Content Include="Assets\Images\Template_Icon.png" />
     <Content Include="Assets\Images\Text.png" />
-    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Tiles\FlipTileLarge.png" />
+    <Content Include="Assets\Tiles\FlipTileMedium.png" />
+    <Content Include="Assets\Tiles\FlipTileSmall.png" />
+    <Content Include="Assets\Tiles\IconicSmall.png" />
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

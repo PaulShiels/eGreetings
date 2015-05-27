@@ -41,6 +41,7 @@ namespace eGreetings
             }
         }
 
+
         private void lstCats_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //App.Current.objectImages.Clear();

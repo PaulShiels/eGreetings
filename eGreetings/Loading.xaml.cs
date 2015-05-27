@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using ImageTools.IO.Gif;
+using System.Windows.Media;
 
 namespace eGreetings
 {
@@ -21,9 +22,11 @@ namespace eGreetings
         {
             InitializeComponent();
             LayoutRoot.Background = App.Current.appBackgroundImage;
-            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
-            ImageSource = new Uri("http://egreetings.me/Images/loading_Only.gif", UriKind.Absolute);
-            this.DataContext = this;
+            //ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            //ImageSource = new Uri("http://egreetings.me/Images/loading_Only.gif", UriKind.Absolute);
+            //this.DataContext = this;
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+            txtLoading.FontFamily = fontFamily;
         }
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)

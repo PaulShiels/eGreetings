@@ -122,7 +122,7 @@ namespace eGreetings
             {
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
-                MessageBox.Show(e.ExceptionObject.ToString());
+                MessageBox.Show("Sorry, something went wrong in the applicaion and it will now terminate. \nSorry for any inconvenience.");
             }
         }
 
@@ -264,6 +264,7 @@ namespace eGreetings
                     //templateImagesStrings = images[0];
                     //objectImageStrings = images[1];
                 }
+                response.Dispose();
             }
         }
         
@@ -289,6 +290,7 @@ namespace eGreetings
                 ms.Write(fileBytes, 0, fileBytes.Length);
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.SetSource(ms);
+                GC.Collect();
                 return bitmapImage;
             }
         }

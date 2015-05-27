@@ -29,7 +29,8 @@
             <!--<StackPanel>
                 <imagetools:AnimatedImage x:Name="Image" Source="{Binding Path=Assets\Images\loading_Logo.gif, Converter={StaticResource ImageConverter}}" />
             </StackPanel>-->
-            <imagetools:AnimatedImage Margin="80" Source="{Binding Path=ImageSource, Converter={StaticResource ImageConverter}}" />
+            <TextBlock Name="txtLoading" Text="Loading Tools" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="64" Foreground="Wheat"></TextBlock>
+            <!--<imagetools:AnimatedImage Margin="80" Source="{Binding Path=ImageSource, Converter={StaticResource ImageConverter}}" />-->
         </Grid>
     </Grid>
 

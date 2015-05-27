@@ -27,7 +27,7 @@ namespace eGreetings
             LayoutRoot.Background = App.Current.appBackgroundImage;
             if (lbxTemplates.Items.Count == 0)
             {
-                //lbxTemplates.Items.Clear();
+                lbxTemplates.Items.Clear();
                 foreach (var image in App.Current.catImages)
                 {
                     Border border = new Border() {BorderBrush=new SolidColorBrush(Colors.DarkGray), BorderThickness=new Thickness(4), Margin=new Thickness(40) };
@@ -39,6 +39,11 @@ namespace eGreetings
                     lbxTemplates.Items.Add(border);
                 }
             }
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
         }
 
         private void lbxTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)

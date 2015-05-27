@@ -3,8 +3,6 @@ C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Rele
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Fonts\konstytucyja_091.ttf
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Fonts\Rostock Kaligraph.ttf
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\ApplicationIcon.png
-C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\FlipCycleTileLarge.png
-C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\FlipCycleTileMedium.png
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\FlipCycleTileSmall.png
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\IconicTileMediumLarge.png
 C:\Users\Paul\Documents\IT\Year4\MobileArchDesign\eGreetings\eGreetings\Bin\Release\Assets\Tiles\IconicTileSmall.png
