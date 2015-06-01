@@ -46,13 +46,16 @@ namespace eGreetings
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            SystemTray.ProgressIndicator = new ProgressIndicator();
+            App.Current.SetProgressIndicator(true);
+
             txtLoggingIn.Visibility = Visibility.Visible;
             txtError.Visibility = Visibility.Collapsed;
             
             credentials = new UserCredentials(txtUsername.Text, txtPassword.Text);
             saveAccountIsolatedStorage(credentials);
             await RunAsync(credentials);
-
+            App.Current.SetProgressIndicator(false);
             if (loginSuccess)
             {
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));

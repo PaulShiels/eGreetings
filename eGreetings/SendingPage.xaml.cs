@@ -18,7 +18,7 @@ namespace eGreetings
 
         public SendingPage()
         {
-            InitializeComponent();
+            InitializeComponent();                       
             LayoutRoot.Background = App.Current.appBackgroundImage;
             ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
             ImageSource = new Uri("http://egreetings.me/Images/newtonsLoading1.gif", UriKind.Absolute);
@@ -33,5 +33,6 @@ namespace eGreetings
             base.OnBackKeyPress(e);
         }
 
+        
     }
 }

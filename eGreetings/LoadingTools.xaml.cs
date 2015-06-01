@@ -30,12 +30,15 @@ namespace eGreetings
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            SystemTray.ProgressIndicator = new ProgressIndicator();
+            App.Current.SetProgressIndicator(true);
             if (App.Current.objectImages.Count == 0)
             {
                 await App.Current.GetImagesAsync("objects", "all");
                 App.Current.objectImages = App.Current.convertImageStringsToImageList(App.Current.retrivedImageStringsTemp);
                 App.Current.retrivedImageStringsTemp.Clear();
             }
+            App.Current.SetProgressIndicator(false);
             NavigationService.Navigate(new Uri("/EditingPage.xaml", UriKind.Relative));
         }
 

@@ -9,7 +9,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Landscape"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
@@ -25,9 +25,9 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Name="txtSuccess" Text="Your Greeting Has Been Sucessfully Sent"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Foreground="Wheat" TextAlignment="Center" Name="txtSuccess" Text="Your Greeting Has Been Sucessfully Sent"></TextBlock>
                 <Border Margin="40" CornerRadius="15" BorderThickness="2" BorderBrush="Wheat" Background="RosyBrown">
-                    <Button x:Name="btnOk" Content="OK" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontSize="34"  Margin="-10" BorderBrush="RosyBrown" Click="btnOk_Click" Width="250"></Button>
+                    <Button x:Name="btnOk" Content="OK" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontSize="34"  Margin="-10" BorderBrush="RosyBrown" Click="btnOk_Click" Width="250"></Button>
                 </Border>
             </StackPanel>
         </Grid>

@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-IE" />
   <App xmlns="" ProductID="{72cd29e3-4c35-4f9b-8c28-255a9d41e53d}" Title="eGreetings" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="eGreetings author" Description="Whatever the occasion create and send your own personalised greetings to all your friends and family." Publisher="eGreetings" PublisherID="{1ca298b2-104e-473a-b91d-a86a9955d03b}">
-    <IconPath IsRelative="true" IsResource="false">eGreetingsLogo.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\Tiles\eGreetingsLogo.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_PHOTO" />

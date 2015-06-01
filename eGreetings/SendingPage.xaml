@@ -31,10 +31,10 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel VerticalAlignment="Center">
-                <Border CornerRadius="8" Width="420" Height="315" BorderThickness="8" BorderBrush="Wheat" >
+                <Border CornerRadius="8" Width="420" Height="315" BorderThickness="8" BorderBrush="Transparent" >
                     <imagetools:AnimatedImage Source="{Binding Path=ImageSource, Converter={StaticResource ImageConverter}}" />
                 </Border>
-                <TextBlock Name="txtSending" Text="Sending..." FontSize="42" HorizontalAlignment="Center" Margin="10"></TextBlock>
+                <TextBlock Name="txtSending" Text="Sending..." FontSize="42" Foreground="Wheat" HorizontalAlignment="Center" Margin="10"></TextBlock>
             </StackPanel>
         </Grid>
     </Grid>

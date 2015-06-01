@@ -31,9 +31,12 @@ namespace eGreetings
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            SystemTray.ProgressIndicator = new ProgressIndicator();
+            App.Current.SetProgressIndicator(true);
             await App.Current.GetImagesAsync(ButtonClicked, Category);
             App.Current.catImages = App.Current.convertImageStringsToImageList(App.Current.retrivedImageStringsTemp);
             App.Current.retrivedImageStringsTemp.Clear();
+            App.Current.SetProgressIndicator(false);
             NavigationService.Navigate(new Uri("/TemplateListPage.xaml", UriKind.Relative));
         }
 

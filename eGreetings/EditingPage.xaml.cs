@@ -517,6 +517,7 @@ namespace eGreetings
             if (lbxObjects.Visibility == Visibility.Visible)
             {
                 lbxObjects.Visibility = Visibility.Collapsed;
+                ContentPanel.Visibility = Visibility.Visible;
             }
             else
             {

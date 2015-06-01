@@ -19,6 +19,8 @@ using Microsoft.Xna.Framework.Media;
 using System.Collections.ObjectModel;
 using System.Collections;
 using System.Net.NetworkInformation;
+using Microsoft.Phone.Info;
+using Microsoft.Phone.Tasks;
 
 namespace eGreetings
 {
@@ -46,11 +48,20 @@ namespace eGreetings
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {   
+        {
+            if (DeviceStatus.DeviceTotalMemory < 268435456)
+            {
+                MessageBoxResult result = MessageBox.Show("Sorry your device does not contain enough RAM to run eGreetings. \neGreetings will now close.");
+                if (result == MessageBoxResult.OK)
+                {
+                    App.Current.Terminate();
+                }
+            }
+
             //RunAsync();
             if (NetworkInterface.GetIsNetworkAvailable() == false)
             {
-                MessageBoxResult result = MessageBox.Show("Network is unavailable therefore eGreetings is unable to run. eGreetings will now close.");
+                MessageBoxResult result = MessageBox.Show("A network connection is unavailable therefore eGreetings is unable to run. \neGreetings will now close.");
                 if(result == MessageBoxResult.OK)
                 {
                     App.Current.Terminate();
@@ -58,7 +69,9 @@ namespace eGreetings
             }
 
             loadString();
-        }        
+
+            
+        }  
 
         private string loadString()
         {
@@ -74,6 +87,34 @@ namespace eGreetings
                     //    result = reader.ReadLine();
                     //    reader.Close();
                     //}
+
+                    //If the app has not been rated ask the user to rate it
+                    if (isf.FileExists("AppHasBeenUsed.store"))
+                    {
+                        if (!isf.FileExists("Rated.store"))
+                        {
+                            MessageBoxResult mbxResult = MessageBox.Show("Please take a minute to tell us what you think of eGreetings", "Tell us what you think", MessageBoxButton.OKCancel);
+                            if (mbxResult == MessageBoxResult.OK)
+                            {
+                                using (IsolatedStorageFileStream rawStream = isf.CreateFile("Rated.store")) { }
+                                MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
+                                marketplaceReviewTask.Show();
+                            }
+                        }
+                        else
+                        {
+                            //DateTime creationDate = Convert.ToDateTime(isf.GetCreationTime("Rated.store").TimeOfDay.ToString());
+                            //if (DateTime.Now.Subtract(creationDate).TotalDays > 4)
+                            //{
+                            //    isf.DeleteFile("Rated.store");
+                            //}
+                        }
+
+                    }
+                    else
+                    {
+                        using (IsolatedStorageFileStream rawStream = isf.CreateFile("AppHasBeenUsed.store")) { }
+                    }
                 }
                 else
                 {

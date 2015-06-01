@@ -162,20 +162,20 @@
         <Border x:Name="insertTextModal" Visibility="Collapsed" Grid.ColumnSpan="2" Opacity="0.9" MaxWidth="650" MaxHeight="400" Background="Yellow" CornerRadius="25,25,25,25" BorderThickness="0">
             <StackPanel>
                 <TextBlock Text="Enter Text" FontSize="38" Margin="0,10" Foreground="White" FontWeight="ExtraBold" TextWrapping="Wrap" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Name="txtMessage" FontSize="30" TextWrapping="Wrap" Height="120" AcceptsReturn="True"></TextBox>
+                <TextBox Name="txtMessage" FontSize="30" TextWrapping="Wrap" Foreground="Black" Height="120" AcceptsReturn="True"></TextBox>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel>
                         <c4fToolkit:ColorPicker Name="csFontColor" Margin="20,0" Height="190" Width="170"></c4fToolkit:ColorPicker>
                     </StackPanel>
                     <StackPanel Width="450">
                     <StackPanel Margin="0,-20" Orientation="Horizontal">
-                    <toolkit:ListPicker Name="lpFontSize" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
+                    <toolkit:ListPicker Name="lpFontSize" Width="190" FontSize="22" Foreground="Black" ExpansionMode="ExpansionAllowed" Background="LightBlue">
                         <toolkit:ListPickerItem Content="Small"/>
                         <toolkit:ListPickerItem Content="Medium"/>
                         <toolkit:ListPickerItem Content="Large"/>
                         <toolkit:ListPickerItem Content="X-Large"/>
                     </toolkit:ListPicker>
-                    <toolkit:ListPicker Name="lpFontFamily" SelectionChanged="lpFontFamily_SelectionChanged" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
+                    <toolkit:ListPicker Name="lpFontFamily" SelectionChanged="lpFontFamily_SelectionChanged" Foreground="Black" Width="190" FontSize="22" ExpansionMode="ExpansionAllowed" Background="LightBlue">
                         <toolkit:ListPickerItem Content="Curly"/>
                         <toolkit:ListPickerItem Content="Dancing Script"/>
                         <toolkit:ListPickerItem Content="konstytucyja"/>

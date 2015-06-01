@@ -25,6 +25,8 @@ namespace eGreetings
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             LayoutRoot.Background = App.Current.appBackgroundImage;
+            FontFamily fontFamily = new FontFamily("/Assets/Fonts/Dancing Script.ttf#Dancing Script");
+            txtBackgrounds.FontFamily = fontFamily;
             if (lbxTemplates.Items.Count == 0)
             {
                 lbxTemplates.Items.Clear();

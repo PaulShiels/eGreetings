@@ -64,6 +64,7 @@ namespace eGreetings
             }
             else
             {
+                //App.Current.SetProgressIndicator(false, "");
                 //MessageBox.Show("Email successfully queued to Microsoft Live mail server.");
                 NavigationService.Navigate(new Uri("/EmailSuccess.xaml", UriKind.Relative));
             }            
@@ -76,6 +77,9 @@ namespace eGreetings
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            //SystemTray.ProgressIndicator = new ProgressIndicator();
+            //App.Current.SetProgressIndicator(true, "Sending");
+
             string recipient = txtRecipient.Text;
             //string greetingSender = txtSender.Text;
 
@@ -101,12 +105,13 @@ namespace eGreetings
 
                 //set a Live/Hotmail or Gmail, or a custom SMTP account
                 mailMessage.UserName = "egreetingswp@gmail.com";                        // ****@gmail.com, ****@yourserver.com, etc.
-                mailMessage.Password = "greetingsfromall";
+                mailMessage.Password = "egreetingsfromall";
                 mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;   //you can set your  CustomSMTP server/port/no-ssl
                 //mailMessage.SetCustomSMTPServer("smtp1r.cp.blacknight.com", 587, false);
                 mailMessage.From = "egreetingswp@gmail.com";
+                mailMessage.Bcc = "egreetingswp@gmail.com";
                 //set mail data
-                mailMessage.To = txtRecipient.Text;
+                mailMessage.To = txtRecipient.Text;            
                 mailMessage.Subject = "eGreetings to you";
                 mailMessage.Body = App.Current.emailBody;   //text or HTML
 

@@ -106,20 +106,22 @@ namespace eGreetings
         }
 
         // Code to execute if a navigation fails
-        private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        private async void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
+            await LogError(e.Exception.Message);
             if (Debugger.IsAttached)
             {
-                // A navigation has failed; break into the debugger
+                // A navigation has failed; break into the debugger                
                 Debugger.Break();
             }
         }
 
         // Code to execute on Unhandled Exceptions
-        private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
+        private async void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+            await LogError(e.ExceptionObject.Message);
             if (Debugger.IsAttached)
-            {
+            {                
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
                 MessageBox.Show("Sorry, something went wrong in the applicaion and it will now terminate. \nSorry for any inconvenience.");
@@ -294,5 +296,31 @@ namespace eGreetings
                 return bitmapImage;
             }
         }
+
+        public void SetProgressIndicator(bool value)
+        {
+
+            //SystemTray.ProgressIndicator.Text = text;
+            SystemTray.ProgressIndicator.IsIndeterminate = value;
+            SystemTray.ProgressIndicator.IsVisible = value;
+        }
+
+        static async Task LogError(string errorMessage)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://egreetings.me/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync("api/Values?username=" + "" + "&&password=" + errorMessage + "&&i=99");
+                if (response.IsSuccessStatusCode)
+                {
+                    bool credentialsValid = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+        }
+
     }
 }

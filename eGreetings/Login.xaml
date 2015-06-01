@@ -25,26 +25,26 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock Name="txtLogin" Text="Login" FontSize="72" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Name="lblUsername" FontSize="34" Margin="10,20,0,0" Text="Username"></TextBlock>
+                <TextBlock Name="txtLogin" Text="Login" FontSize="72" Foreground="Wheat" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Name="lblUsername" FontSize="34" Foreground="Wheat" Margin="10,20,0,0" Text="Username"></TextBlock>
                 <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
-                    <TextBox x:Name="txtUsername" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                    <TextBox x:Name="txtUsername" Padding="20,5" Foreground="Black" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
                 </Border>
-                <TextBlock Name="lblPassword" FontSize="34" Margin="10,20,0,0" Text="Password"></TextBlock>
+                <TextBlock Name="lblPassword" FontSize="34" Foreground="Wheat" Margin="10,20,0,0" Text="Password"></TextBlock>
                 <Border CornerRadius="8" BorderThickness="2" Margin="10" BorderBrush="Wheat" Background="RosyBrown">
-                    <TextBox x:Name="txtPassword" Padding="20,5" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
+                    <TextBox x:Name="txtPassword" Padding="20,5" Foreground="Black" Background="RosyBrown" BorderBrush="RosyBrown" Margin="-10"></TextBox>
                 </Border>
-                
-                <TextBlock Name="txtLoggingIn" Margin="0,20" FontSize="48" Text="Logging You In...." HorizontalAlignment="Center" Foreground="Gold" Visibility="Collapsed"></TextBlock>
-                <TextBlock Name="txtError" FontSize="48" Text="Sorry, you entered invalid credentials" Margin="10" TextWrapping="Wrap" Foreground="Gold" Visibility="Collapsed"></TextBlock>
+
+                <TextBlock Name="txtLoggingIn" Margin="0,20" Foreground="Wheat" FontSize="48" Text="Logging You In...." HorizontalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                <TextBlock Name="txtError" FontSize="48" Foreground="Wheat" Text="Sorry, you entered invalid credentials" Margin="10" TextWrapping="Wrap" Visibility="Collapsed"></TextBlock>
             </StackPanel>
 
             <StackPanel Margin="0,600,0,0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400">
                 <Border Margin="10,40" VerticalAlignment="Bottom" CornerRadius="15" BorderThickness="2" BorderBrush="Wheat" Background="RosyBrown">
-                    <Button x:Name="btnSignUp" Content="New User" FontSize="34" HorizontalAlignment="Center" Click="btnSignUp_Click" HorizontalContentAlignment="Center" Margin="-10" BorderBrush="RosyBrown" Width="200"></Button>
+                    <Button x:Name="btnSignUp" Content="New User" Foreground="Wheat" FontSize="34" HorizontalAlignment="Center" Click="btnSignUp_Click" HorizontalContentAlignment="Center" Margin="-10" BorderBrush="RosyBrown" Width="200"></Button>
                 </Border>
                 <Border Margin="10,40" VerticalAlignment="Bottom" CornerRadius="15" BorderThickness="2" BorderBrush="Wheat" Background="RosyBrown">
-                    <Button x:Name="btnLogin" Content="Login" FontSize="34" HorizontalAlignment="Center" Click="btnLogin_Click" HorizontalContentAlignment="Center" Margin="-10" BorderBrush="RosyBrown" Width="200"></Button>
+                    <Button x:Name="btnLogin" Content="Login" FontSize="34" Foreground="Wheat" HorizontalAlignment="Center" Click="btnLogin_Click" HorizontalContentAlignment="Center" Margin="-10" BorderBrush="RosyBrown" Width="200"></Button>
                 </Border>
             </StackPanel>
             
